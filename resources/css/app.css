@@ -1,0 +1,367 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/* ══════════════════════════════════════════
+   SiMagang Design System — Tailwind v4 Theme
+   Source: DESIGN.md (Stitch)
+   ══════════════════════════════════════════ */
+
+@theme {
+    /* ── Font Family ── */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* ── Primary Colors ── */
+    --color-primary: #003e7e;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #1a56a0;
+    --color-on-primary-container: #b3cdff;
+    --color-inverse-primary: #a9c7ff;
+
+    /* ── Secondary Colors ── */
+    --color-secondary: #0058be;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #2170e4;
+    --color-on-secondary-container: #fefcff;
+
+    /* ── Tertiary Colors ── */
+    --color-tertiary: #673000;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #8a4300;
+    --color-on-tertiary-container: #ffbf95;
+
+    /* ── Error / Feedback ── */
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #93000a;
+
+    /* ── Surface Colors ── */
+    --color-background: #f9f9ff;
+    --color-on-background: #191c20;
+    --color-surface: #f9f9ff;
+    --color-on-surface: #191c20;
+    --color-on-surface-variant: #424751;
+    --color-surface-variant: #e2e2e9;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f3f3fa;
+    --color-surface-container: #ededf4;
+    --color-surface-container-high: #e7e8ef;
+    --color-surface-container-highest: #e2e2e9;
+    --color-surface-bright: #f9f9ff;
+    --color-surface-dim: #d9d9e0;
+    --color-surface-tint: #265ea8;
+    --color-inverse-surface: #2e3036;
+    --color-inverse-on-surface: #f0f0f7;
+
+    /* ── Outline / Border ── */
+    --color-outline: #737782;
+    --color-outline-variant: #c2c6d3;
+
+    /* ── Status Chip Colors ── */
+    --color-status-approved-bg: #dcfce7;
+    --color-status-approved-text: #166534;
+    --color-status-pending-bg: #fef08a;
+    --color-status-pending-text: #854d0e;
+    --color-status-rejected-bg: #fee2e2;
+    --color-status-rejected-text: #991b1b;
+
+    /* ── Fixed Colors (Accessibility) ── */
+    --color-primary-fixed: #d6e3ff;
+    --color-primary-fixed-dim: #a9c7ff;
+    --color-on-primary-fixed: #001b3d;
+    --color-on-primary-fixed-variant: #00468c;
+    --color-secondary-fixed: #d8e2ff;
+    --color-secondary-fixed-dim: #adc6ff;
+    --color-on-secondary-fixed: #001a42;
+    --color-on-secondary-fixed-variant: #004395;
+    --color-tertiary-fixed: #ffdcc6;
+    --color-tertiary-fixed-dim: #ffb786;
+    --color-on-tertiary-fixed: #311300;
+    --color-on-tertiary-fixed-variant: #723600;
+
+    /* ── Border Radius ── */
+    --radius-sm: 0.25rem;
+    --radius-DEFAULT: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+}
+
+/* ══════════════════════════════════
+   Utility Classes (from DESIGN.md)
+   ══════════════════════════════════ */
+
+.border-soft {
+    border: 0.5px solid #e2e8f0;
+}
+
+.shadow-soft {
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-modal {
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Status Chips ── */
+
+.chip-approved {
+    background: var(--color-status-approved-bg);
+    color: var(--color-status-approved-text);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.chip-pending {
+    background: var(--color-status-pending-bg);
+    color: var(--color-status-pending-text);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.chip-rejected {
+    background: var(--color-status-rejected-bg);
+    color: var(--color-status-rejected-text);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ── Buttons ── */
+
+.btn-primary {
+    background: #1a56a0;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 150ms ease, box-shadow 150ms ease;
+}
+.btn-primary:hover {
+    background: #2170e4;
+}
+.btn-primary:active {
+    background: #003e7e;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid #c2c6d3;
+    color: #424751;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 150ms ease;
+}
+.btn-secondary:hover {
+    background: #e2e2e9;
+}
+
+.btn-danger {
+    background: #ba1a1a;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 150ms ease;
+}
+.btn-danger:hover {
+    background: #93000a;
+}
+
+/* ── Form Inputs ── */
+
+.form-input {
+    background: #ffffff;
+    border: 1px solid #c2c6d3;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 15px;
+    line-height: 22px;
+    font-family: 'Inter', sans-serif;
+    color: #191c20;
+    width: 100%;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.form-input::placeholder {
+    color: #737782;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #1a56a0;
+    box-shadow: 0 0 0 1px #1a56a0;
+}
+
+.form-label {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #191c20;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ── Cards ── */
+
+.card {
+    background: #ffffff;
+    border: 0.5px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 200ms ease;
+}
+.card:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+    padding: 20px;
+}
+
+/* ── Progress Bar ── */
+
+.progress-track {
+    background: #e2e2e9;
+    height: 8px;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+.progress-fill {
+    background: #003e7e;
+    height: 8px;
+    border-radius: 9999px;
+    transition: width 500ms ease;
+}
+
+/* ── Gradient CTA Banner ── */
+
+.gradient-cta {
+    background: linear-gradient(to bottom right, #1a56a0, #0058be);
+    border-radius: 8px;
+    padding: 24px;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+.gradient-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -25%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    border-radius: 50%;
+}
+
+/* ── Material Symbols ── */
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+/* ── Typography Classes ── */
+
+.text-display-lg {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+.text-display-sm {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+
+.text-headline-md {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.text-headline-sm {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.text-body-lg {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.text-body-md {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.text-body-sm {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.text-label-md {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+}
+
+.text-label-sm {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+}
