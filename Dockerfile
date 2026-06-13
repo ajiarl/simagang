@@ -2,9 +2,12 @@ FROM php:8.3-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libpng-dev libxml2-dev \
-    libzip-dev nodejs npm \
-    && docker-php-ext-install gd pdo pdo_mysql mbstring xml zip bcmath
+    git curl zip unzip \
+    libpng-dev libxml2-dev libzip-dev \
+    libonig-dev libcurl4-openssl-dev \
+    nodejs npm \
+    && docker-php-ext-install gd pdo pdo_mysql mbstring xml zip bcmath \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
