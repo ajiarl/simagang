@@ -18,10 +18,8 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
-RUN cp .env.example .env && php artisan key:generate
-RUN touch database/database.sqlite
 RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache \
-    && chmod -R 777 storage bootstrap/cache database
+    && chmod -R 777 storage bootstrap/cache
 
 EXPOSE 8000
 
