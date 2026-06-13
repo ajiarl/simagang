@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+
         Gate::policy(InternshipApplication::class, InternshipApplicationPolicy::class);
         Gate::policy(Attendance::class, AttendancePolicy::class);
     }
