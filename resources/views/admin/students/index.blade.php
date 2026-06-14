@@ -4,6 +4,12 @@
 @section('page-title', 'Manajemen Mahasiswa')
 
 @section('content')
+<style>
+    @media (max-width: 767px) {
+        .col-status, .col-aksi { display: none; }
+    }
+</style>
+
 {{-- Page Header --}}
 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
     <h2 class="text-display-lg" style="color: #191c20;">Manajemen Mahasiswa</h2>
@@ -48,8 +54,8 @@
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3; width: 48px;">No.</th>
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">Mahasiswa</th>
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">NIM</th>
-                        <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">Status Magang</th>
-                        <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: center; border-bottom: 1px solid #c2c6d3;">Aksi</th>
+                        <th class="text-label-md col-status" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">Status Magang</th>
+                        <th class="text-label-md col-aksi" style="color: #424751; padding: 12px 20px; text-align: center; border-bottom: 1px solid #c2c6d3;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,14 +67,14 @@
                             <p class="text-label-sm" style="color: #737782;">{{ $student->email }}</p>
                         </td>
                         <td class="text-body-sm" style="padding: 16px 20px; color: #424751;">{{ $student->nim ?? '-' }}</td>
-                        <td style="padding: 16px 20px;">
+                        <td class="col-status" style="padding: 16px 20px;">
                             @if($student->active_internship > 0)
                                 <span class="chip-approved">Aktif Magang</span>
                             @else
                                 <span class="chip-pending">Belum Magang</span>
                             @endif
                         </td>
-                        <td style="padding: 16px 20px;">
+                        <td class="col-aksi" style="padding: 16px 20px;">
                             <div style="display: flex; gap: 8px; justify-content: center;">
                                 <a href="{{ route('admin.students.show', $student) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                     Detail

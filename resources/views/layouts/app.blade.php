@@ -19,7 +19,7 @@
         /* ── Sidebar ── */
         .sidebar {
             width: 260px;
-            min-height: 100vh;
+            height: 100vh;
             background: #f9f9ff;
             border-right: 1px solid #c2c6d3;
             display: flex;
@@ -34,7 +34,8 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
+            min-height: 100vh;
             z-index: 15;
         }
         @media (max-width: 1023px) {
@@ -410,6 +411,7 @@
         @media (max-width: 1023px) {
             .hamburger-btn { display: block !important; }
             .sidebar-close-btn { display: block !important; }
+            .topbar h1 { font-size: 16px !important; }
         }
     </style>
 

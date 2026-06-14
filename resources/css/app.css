@@ -368,3 +368,7 @@
     line-height: 16px;
     font-weight: 500;
 }
+
+@media (max-width: 767px) {
+    .page-title, h1 { font-size: 20px !important; }
+}
