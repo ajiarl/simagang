@@ -245,3 +245,27 @@ Use Railway Console:
 ```bash
 php artisan migrate --seed
 ```
+
+---
+
+## 15. v2 Features Implemented
+
+| Feature | Status | Notes |
+|---|---|---|
+| Download lampiran dokumen (admin) | ✅ | Admin can now download student-uploaded documents (KTM, surat permohonan, CV) from application detail page |
+| Forgot Password | ✅ | Uses Laravel built-in Password Reset. Routes: password.request, password.email, password.reset, password.update |
+| Email Notifications | ✅ | All 4 notification classes (ApplicationStatusChanged, NewLogbookSubmitted, LogbookReviewed, AssessmentCompleted) now send both database AND email notifications |
+
+### SMTP Configuration
+- Provider: Gmail SMTP
+- Host: smtp.gmail.com, Port: 587, Encryption: TLS
+- Requires Gmail App Password (not regular password)
+- MAIL_FROM_NAME="SiMagang"
+
+### Important Notes
+- Seeder accounts (mhs1@simagang.test, etc.) use fake domains — 
+  cannot receive real emails. For testing forgot password / email 
+  notifications, temporarily change a user's email to a real address 
+  via tinker, then restore after testing.
+- APP_URL must be set correctly (http://localhost:8000 for local, 
+  production URL for Railway) so email links work correctly.
