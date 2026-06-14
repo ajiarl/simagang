@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Masuk — SiMagang</title>
-    <meta name="description" content="Login ke SiMagang — Sistem Informasi Magang Mahasiswa">
+    <title>Reset Password — SiMagang</title>
+    <meta name="description" content="Buat password baru untuk akun SiMagang Anda">
 
-    {{-- Google Fonts: Inter + Material Symbols --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -100,6 +99,11 @@
             border-color: #1a56a0;
             box-shadow: 0 0 0 1px #1a56a0;
         }
+        .form-group input[readonly] {
+            background: #f3f3fa;
+            color: #737782;
+            cursor: not-allowed;
+        }
         .password-wrapper {
             position: relative;
         }
@@ -127,7 +131,6 @@
             line-height: 18px;
             font-weight: 600;
             padding: 12px 18px;
-            min-height: 44px;
             border-radius: 6px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             border: none;
@@ -143,7 +146,7 @@
         .login-btn:active {
             background: #003e7e;
         }
-        .forgot-link {
+        .back-link {
             display: block;
             text-align: center;
             margin-top: 16px;
@@ -151,7 +154,7 @@
             color: #0058be;
             text-decoration: none;
         }
-        .forgot-link:hover {
+        .back-link:hover {
             text-decoration: underline;
         }
         .login-footer {
@@ -160,11 +163,6 @@
             font-size: 14px;
             line-height: 20px;
             color: #737782;
-        }
-        .error-text {
-            font-size: 13px;
-            color: #ba1a1a;
-            margin-top: 4px;
         }
         .error-alert {
             background: #ffdad6;
@@ -186,10 +184,10 @@
             {{-- Header --}}
             <div class="login-header">
                 <div class="login-icon">
-                    <span class="material-symbols-outlined">school</span>
+                    <span class="material-symbols-outlined">key</span>
                 </div>
-                <h1 class="login-title">SiMagang</h1>
-                <p class="login-subtitle">Sistem Informasi Magang Mahasiswa</p>
+                <h1 class="login-title">Reset Password</h1>
+                <p class="login-subtitle">Buat password baru untuk akun Anda</p>
             </div>
 
             {{-- Error Alert --}}
@@ -200,52 +198,76 @@
                 </div>
             @endif
 
-            {{-- Login Form --}}
-            <form method="POST" action="{{ route('login') }}">
+            {{-- Reset Password Form --}}
+            <form method="POST" action="{{ route('password.update') }}">
                 @csrf
 
+                {{-- Hidden token --}}
+                <input type="hidden" name="token" value="{{ $token }}">
+
+                {{-- Email (pre-filled, readonly) --}}
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        value="{{ old('email') }}"
-                        placeholder="nama@email.com"
-                        required
-                        autofocus
+                        value="{{ old('email', $email) }}"
+                        readonly
                     >
+                    <x-form-error name="email" />
                 </div>
 
+                {{-- New Password --}}
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Password Baru</label>
                     <div class="password-wrapper">
                         <input
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="Masukkan password"
+                            placeholder="Minimal 8 karakter"
                             required
+                            autofocus
                         >
-                        <button type="button" class="password-toggle" onclick="togglePassword()">
-                            <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon">visibility_off</span>
+                        <button type="button" class="password-toggle" onclick="togglePassword('password', 'eyeIcon1')">
+                            <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon1">visibility_off</span>
                         </button>
                     </div>
+                    <x-form-error name="password" />
                 </div>
 
-                <button type="submit" class="login-btn">Masuk</button>
+                {{-- Confirm Password --}}
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password</label>
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            placeholder="Ulangi password baru"
+                            required
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword('password_confirmation', 'eyeIcon2')">
+                            <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon2">visibility_off</span>
+                        </button>
+                    </div>
+                    <x-form-error name="password_confirmation" />
+                </div>
+
+                <button type="submit" class="login-btn">Reset Password</button>
             </form>
 
-            <a href="{{ route('password.request') }}" class="forgot-link">Lupa password?</a>
+            <a href="{{ route('login') }}" class="back-link">← Kembali ke Login</a>
         </div>
 
         <p class="login-footer">&copy; {{ date('Y') }} Sistem Informasi Magang — Universitas</p>
     </div>
 
     <script>
-        function togglePassword() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eyeIcon');
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
             if (input.type === 'password') {
                 input.type = 'text';
                 icon.textContent = 'visibility';

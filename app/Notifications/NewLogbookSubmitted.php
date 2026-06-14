@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Models\Logbook;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class NewLogbookSubmitted extends Notification
 {
@@ -19,7 +20,18 @@ class NewLogbookSubmitted extends Notification
 
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['database', 'mail'];
+    }
+
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->subject('Logbook Baru Menunggu Review - SiMagang')
+            ->greeting('Halo ' . $notifiable->name . ',')
+            ->line($this->logbook->internshipApplication->user->name 
+                . ' telah mengumpulkan logbook baru untuk direview.')
+            ->action('Review Logbook', route('dosen.logbooks.index'))
+            ->line('Mohon segera ditinjau.');
     }
 
     public function toDatabase(object $notifiable): array

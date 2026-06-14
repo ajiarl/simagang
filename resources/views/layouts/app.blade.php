@@ -188,13 +188,16 @@
     {{-- Sidebar --}}
     <aside class="sidebar" id="sidebar">
         {{-- Logo --}}
-        <div style="padding: 24px 16px 20px;">
+        <div style="padding: 24px 16px 20px; display: flex; align-items: center; justify-content: space-between;">
             <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                 <div style="width: 40px; height: 40px; border-radius: 9999px; background: #1a56a0; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #ffffff; font-size: 22px;">school</span>
                 </div>
                 <span class="text-headline-md" style="color: #003e7e; font-weight: 700;">SiMagang</span>
             </a>
+            <button onclick="toggleSidebar()" style="display: none; background: none; border: none; cursor: pointer; padding: 4px;" class="sidebar-close-btn">
+                <span class="material-symbols-outlined" style="font-size: 24px; color: #424751;">close</span>
+            </button>
         </div>
 
         <div style="padding: 0 0 0 0; border-top: 1px solid #c2c6d3; margin: 0 16px; padding-top: 16px;"></div>
@@ -376,7 +379,8 @@
 
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('open');
         }
 
         function toggleDropdown() {
@@ -405,6 +409,7 @@
     <style>
         @media (max-width: 1023px) {
             .hamburger-btn { display: block !important; }
+            .sidebar-close-btn { display: block !important; }
         }
     </style>
 

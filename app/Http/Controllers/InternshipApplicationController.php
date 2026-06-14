@@ -152,4 +152,18 @@ class InternshipApplicationController extends Controller
         // Return for download
         return $pdf->download('Surat_Pengantar_Magang_' . $application->user->nim . '.pdf');
     }
+
+    public function downloadDocument(InternshipApplication $application, Document $document)
+    {
+        // Verify document belongs to this application
+        if ($document->internship_application_id !== $application->id) {
+            abort(404);
+        }
+        
+        if (!Storage::exists($document->file_path)) {
+            abort(404, 'File tidak ditemukan di server.');
+        }
+
+        return Storage::download($document->file_path, $document->original_name);
+    }
 }

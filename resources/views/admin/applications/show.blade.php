@@ -90,7 +90,7 @@
                                     <span class="material-symbols-outlined" style="color: #0058be;">description</span>
                                     <span class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $doc->name }}</span>
                                 </div>
-                                <a href="#" class="text-label-sm" style="color: #0058be; text-decoration: none;">Unduh</a>
+                                <a href="{{ route('admin.applications.documents.download', [$application, $doc]) }}" class="text-label-sm" style="color: #0058be; text-decoration: none;">Unduh</a>
                             </li>
                         @endforeach
                     </ul>

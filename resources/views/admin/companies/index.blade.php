@@ -69,7 +69,7 @@
                         </td>
                         <td style="padding: 16px 20px;">
                             <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
-                                <a href="{{ route('admin.companies.show', $company) }}" class="btn-secondary" style="padding: 6px 12px; font-size: 13px; text-decoration: none;">
+                                <a href="{{ route('admin.companies.show', $company) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                     Detail
                                 </a>
                                 <a href="{{ route('admin.companies.edit', $company) }}" class="text-label-md" style="color: #0058be; text-decoration: none; padding: 6px 8px;">

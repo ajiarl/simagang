@@ -62,7 +62,7 @@
                         </td>
                         <td style="padding: 16px 20px; text-align: right; vertical-align: top;">
                             @if(in_array($logbook->status, ['draft', 'rejected']))
-                                <a href="{{ route('mahasiswa.logbooks.edit', $logbook) }}" class="btn-secondary" style="padding: 6px 12px; font-size: 13px; text-decoration: none;">
+                                <a href="{{ route('mahasiswa.logbooks.edit', $logbook) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                     Edit
                                 </a>
                             @endif

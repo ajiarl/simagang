@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Masuk — SiMagang</title>
-    <meta name="description" content="Login ke SiMagang — Sistem Informasi Magang Mahasiswa">
+    <title>Lupa Password — SiMagang</title>
+    <meta name="description" content="Reset password akun SiMagang Anda">
 
-    {{-- Google Fonts: Inter + Material Symbols --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -100,25 +99,6 @@
             border-color: #1a56a0;
             box-shadow: 0 0 0 1px #1a56a0;
         }
-        .password-wrapper {
-            position: relative;
-        }
-        .password-toggle {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #737782;
-            padding: 4px;
-            display: flex;
-            align-items: center;
-        }
-        .password-toggle:hover {
-            color: #424751;
-        }
         .login-btn {
             width: 100%;
             background: #1a56a0;
@@ -127,7 +107,6 @@
             line-height: 18px;
             font-weight: 600;
             padding: 12px 18px;
-            min-height: 44px;
             border-radius: 6px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             border: none;
@@ -143,7 +122,7 @@
         .login-btn:active {
             background: #003e7e;
         }
-        .forgot-link {
+        .back-link {
             display: block;
             text-align: center;
             margin-top: 16px;
@@ -151,7 +130,7 @@
             color: #0058be;
             text-decoration: none;
         }
-        .forgot-link:hover {
+        .back-link:hover {
             text-decoration: underline;
         }
         .login-footer {
@@ -161,10 +140,16 @@
             line-height: 20px;
             color: #737782;
         }
-        .error-text {
-            font-size: 13px;
-            color: #ba1a1a;
-            margin-top: 4px;
+        .success-alert {
+            background: #dcfce7;
+            color: #166534;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .error-alert {
             background: #ffdad6;
@@ -186,11 +171,19 @@
             {{-- Header --}}
             <div class="login-header">
                 <div class="login-icon">
-                    <span class="material-symbols-outlined">school</span>
+                    <span class="material-symbols-outlined">lock_reset</span>
                 </div>
-                <h1 class="login-title">SiMagang</h1>
-                <p class="login-subtitle">Sistem Informasi Magang Mahasiswa</p>
+                <h1 class="login-title">Lupa Password?</h1>
+                <p class="login-subtitle">Masukkan email Anda untuk menerima link reset password</p>
             </div>
+
+            {{-- Success Alert --}}
+            @if(session('success'))
+                <div class="success-alert">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span>
+                    {{ session('success') }}
+                </div>
+            @endif
 
             {{-- Error Alert --}}
             @if($errors->has('email'))
@@ -200,8 +193,8 @@
                 </div>
             @endif
 
-            {{-- Login Form --}}
-            <form method="POST" action="{{ route('login') }}">
+            {{-- Forgot Password Form --}}
+            <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
                 <div class="form-group">
@@ -215,45 +208,17 @@
                         required
                         autofocus
                     >
+                    <x-form-error name="email" />
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-wrapper">
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Masukkan password"
-                            required
-                        >
-                        <button type="button" class="password-toggle" onclick="togglePassword()">
-                            <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon">visibility_off</span>
-                        </button>
-                    </div>
-                </div>
-
-                <button type="submit" class="login-btn">Masuk</button>
+                <button type="submit" class="login-btn">Kirim Link Reset</button>
             </form>
 
-            <a href="{{ route('password.request') }}" class="forgot-link">Lupa password?</a>
+            <a href="{{ route('login') }}" class="back-link">← Kembali ke Login</a>
         </div>
 
         <p class="login-footer">&copy; {{ date('Y') }} Sistem Informasi Magang — Universitas</p>
     </div>
 
-    <script>
-        function togglePassword() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eyeIcon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.textContent = 'visibility';
-            } else {
-                input.type = 'password';
-                icon.textContent = 'visibility_off';
-            }
-        }
-    </script>
 </body>
 </html>

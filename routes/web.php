@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InternshipApplicationController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +11,12 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'showLoginForm']);
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
+
+    // Password Reset
+    Route::get('/forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
 });
 
 // ── Auth Routes ──
@@ -63,6 +70,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/applications/{application}/approve', [InternshipApplicationController::class, 'approve'])->name('applications.approve');
         Route::post('/applications/{application}/reject', [InternshipApplicationController::class, 'reject'])->name('applications.reject');
         Route::get('/applications/{application}/surat-pdf', [InternshipApplicationController::class, 'generatePdf'])->name('applications.pdf');
+        Route::get('/applications/{application}/documents/{document}/download', [InternshipApplicationController::class, 'downloadDocument'])->name('applications.documents.download');
         
         // Attendances
         Route::get('/presensi', [App\Http\Controllers\Admin\AttendanceController::class, 'index'])->name('attendances.index');
