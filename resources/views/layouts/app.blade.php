@@ -412,6 +412,35 @@
             .hamburger-btn { display: block !important; }
             .sidebar-close-btn { display: block !important; }
             .topbar h1 { font-size: 16px !important; }
+
+            /* 1. Sidebar width on mobile: max 280px, not full width */
+            .sidebar {
+                width: 280px !important;
+                max-width: 85vw !important;
+            }
+
+            /* 2. Nav items on mobile: reduce font size and padding */
+            .nav-item, .sidebar a {
+                font-size: 14px !important;
+                padding: 10px 16px !important;
+            }
+            .sidebar .nav-icon,
+            .sidebar .material-symbols-outlined {
+                font-size: 20px !important;
+            }
+
+            /* 3. Sidebar logo area on mobile: reduce padding */
+            .sidebar > div:first-child {
+                padding: 16px 12px !important;
+            }
+
+            /* 4. Keluar button on mobile: reduce size */
+            .sidebar .btn-logout, 
+            .sidebar form button,
+            .sidebar > div:last-child {
+                padding: 10px 16px !important;
+                font-size: 13px !important;
+            }
         }
     </style>
 
