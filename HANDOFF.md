@@ -214,3 +214,34 @@ App\Models\InternshipApplication::create([
     'end_date'             => now()->addMonths(3),
 ]);
 ```
+
+---
+
+## 14. Production Deployment
+
+- **Live URL:** https://simagang-production.up.railway.app
+- **Hosting:** Railway (Docker-based deployment)
+- **Database:** MySQL (Railway managed service)
+- **Repo:** https://github.com/ajiarl/simagang
+
+### Deployment Files
+- `Dockerfile` — PHP 8.3 + extensions (gd, pdo_mysql, mbstring, etc.)
+- Environment variables configured in Railway dashboard (not in repo)
+
+### Key env vars set on Railway (simagang service)
+- DB_CONNECTION=mysql
+- DB_HOST=mysql.railway.internal
+- DB_PORT=3306
+- DB_DATABASE=railway
+- SESSION_DRIVER=file
+- APP_ENV=production
+- APP_DEBUG=false
+
+### Redeploy
+Push to `main` branch triggers auto-redeploy on Railway.
+
+### Run migrations on production
+Use Railway Console:
+```bash
+php artisan migrate --seed
+```
