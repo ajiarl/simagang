@@ -52,7 +52,9 @@ class CompanyController extends Controller
             'contact_person.required' => 'Nama contact person wajib diisi.',
         ]);
 
-        Company::create($request->all());
+        Company::create($request->only([
+            'name', 'email', 'phone', 'address', 'website', 'contact_person',
+        ]));
 
         return redirect()->route('admin.companies.index')->with('success', 'Perusahaan berhasil ditambahkan.');
     }
@@ -90,7 +92,9 @@ class CompanyController extends Controller
             'contact_person.required' => 'Nama contact person wajib diisi.',
         ]);
 
-        $company->update($request->all());
+        $company->update($request->only([
+            'name', 'email', 'phone', 'address', 'website', 'contact_person',
+        ]));
 
         return redirect()->route('admin.companies.index')->with('success', 'Data perusahaan berhasil diperbarui.');
     }

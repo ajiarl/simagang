@@ -18,8 +18,8 @@ class Company extends Model
         'website',
         'description',
         'contact_person',
-        'logo_path',
-        'is_active',
+        // 'logo_path' — tidak di-mass-assign, hanya via upload khusus
+        // 'is_active' — tidak di-mass-assign, hanya via toggle admin
     ];
 
     public function internshipApplications(): HasMany
