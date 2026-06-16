@@ -204,7 +204,7 @@
         <div style="padding: 0 0 0 0; border-top: 1px solid #c2c6d3; margin: 0 16px; padding-top: 16px;"></div>
 
         {{-- Navigation --}}
-        <nav style="flex: 1; padding: 8px 0;">
+        <nav style="flex: 1; padding: 8px 0; overflow-y: auto;">
             @role('mahasiswa')
                 <a href="{{ route('mahasiswa.dashboard') }}" class="nav-item @if(request()->routeIs('mahasiswa.dashboard')) active @endif">
                     <span class="material-symbols-outlined">dashboard</span> Dashboard
@@ -294,14 +294,14 @@
     <div class="main-wrapper">
         {{-- Top Bar --}}
         <header class="topbar">
-            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 16px; min-width: 0;">
                 {{-- Hamburger (mobile) --}}
-                <button onclick="toggleSidebar()" style="display: none; background: none; border: none; cursor: pointer; padding: 4px;" class="hamburger-btn">
+                <button onclick="toggleSidebar()" style="display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;" class="hamburger-btn">
                     <span class="material-symbols-outlined" style="font-size: 24px; color: #424751;">menu</span>
                 </button>
-                <h1 class="text-headline-sm" style="color: #191c20;">@yield('page-title', 'Dashboard')</h1>
+                <h1 class="text-headline-sm" style="color: #191c20; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">@yield('page-title', 'Dashboard')</h1>
             </div>
-            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 16px; flex-shrink: 0;">
                 {{-- Notification Bell --}}
                 <div class="notification-bell user-dropdown" id="notifDropdown">
                     <button onclick="toggleNotifDropdown()" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
@@ -349,9 +349,9 @@
 
                 {{-- User Dropdown --}}
                 <div class="user-dropdown" id="userDropdown">
-                    <button onclick="toggleDropdown()" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 4px; flex-wrap: wrap;">
-                        <div class="avatar">{{ auth()->user()->initials }}</div>
-                        <span class="text-body-sm" style="color: #191c20;">{{ auth()->user()->name }}</span>
+                    <button onclick="toggleDropdown()" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 4px;">
+                        <div class="avatar" style="flex-shrink: 0;">{{ auth()->user()->initials }}</div>
+                        <span class="text-body-sm user-name-text" style="color: #191c20; white-space: nowrap;">{{ auth()->user()->name }}</span>
                         <span class="material-symbols-outlined" style="font-size: 18px; color: #737782;">expand_more</span>
                     </button>
                     <div class="user-dropdown-menu" id="dropdownMenu">
@@ -434,7 +434,15 @@
         @media (max-width: 1023px) {
             .hamburger-btn { display: block !important; }
             .sidebar-close-btn { display: block !important; }
+            
+            /* Navbar Mobile Fixes */
+            .topbar {
+                height: auto;
+                min-height: 64px;
+                padding: 12px 16px;
+            }
             .topbar h1 { font-size: 16px !important; }
+            .user-name-text { display: none !important; }
 
             /* 1. Sidebar width on mobile: max 280px, not full width */
             .sidebar {
