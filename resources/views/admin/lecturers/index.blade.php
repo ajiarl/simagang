@@ -57,21 +57,21 @@
                     <tbody>
                         @foreach($lecturers as $dosen)
                         <tr style="border-bottom: 1px solid #e2e2e9;">
-                            <td class="text-body-sm" style="padding: 16px 20px; color: #737782;">{{ $loop->iteration + ($lecturers->currentPage() - 1) * $lecturers->perPage() }}</td>
-                            <td style="padding: 16px 20px;">
+                            <td class="text-body-sm" style="padding: 16px 20px; color: #737782; vertical-align: middle;">{{ $loop->iteration + ($lecturers->currentPage() - 1) * $lecturers->perPage() }}</td>
+                            <td style="padding: 16px 20px; vertical-align: middle;">
                                 <p class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $dosen->name }}</p>
                                 <p class="text-label-sm" style="color: #737782;">{{ $dosen->email }}</p>
                                 @if($dosen->phone)
                                     <p class="text-label-sm" style="color: #737782;">{{ $dosen->phone }}</p>
                                 @endif
                             </td>
-                            <td class="col-fakultas" style="padding: 16px 20px;">
+                            <td class="col-fakultas" style="padding: 16px 20px; vertical-align: middle;">
                                 <p class="text-body-sm" style="color: #191c20;">{{ $dosen->faculty ?? '-' }}</p>
                                 <p class="text-label-sm" style="color: #737782;">{{ $dosen->department ?? '-' }}</p>
                             </td>
-                            <td class="col-aksi" style="padding: 16px 20px;">
+                            <td class="col-aksi" style="padding: 16px 20px; vertical-align: middle;">
                                 <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-                                    <a href="{{ route('admin.lecturers.show', $dosen) }}" class="text-label-md" style="color: #0058be; text-decoration: none; padding: 6px 8px; display: inline-flex; align-items: center;">
+                                    <a href="{{ route('admin.lecturers.show', $dosen) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                         Detail
                                     </a>
                                     <a href="{{ route('admin.lecturers.edit', $dosen) }}" class="text-label-md" style="color: #0058be; text-decoration: none; padding: 6px 8px; display: inline-flex; align-items: center;">
