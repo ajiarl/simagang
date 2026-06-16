@@ -31,9 +31,19 @@ class DocumentController extends Controller
         }
 
         return Storage::download(
-            $document->file_path, 
-            $document->original_name
+            $document->file_path,
+            $this->sanitizeFilename($document->original_name)
         );
+    }
+
+    /**
+     * Sanitize a filename to prevent path traversal and header injection.
+     */
+    private function sanitizeFilename(string $filename): string
+    {
+        $filename = basename(str_replace(['\\', '\0'], '', $filename));
+        $filename = preg_replace('/[^\w.\-]/', '_', $filename);
+        return preg_replace('/_{2,}/', '_', $filename) ?: 'document';
     }
 
     public function downloadSurat(InternshipApplication $application)

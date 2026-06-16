@@ -57,7 +57,7 @@ class InternshipApplicationController extends Controller
                 'type'                      => 'ktm',
                 'file_path'                 => $ktmPath,
                 'file_name'                 => basename($ktmPath),
-                'original_name'             => $ktmFile->getClientOriginalName(),
+                'original_name'             => $this->sanitizeFilename($ktmFile->getClientOriginalName()),
             ]);
         }
 
@@ -71,7 +71,7 @@ class InternshipApplicationController extends Controller
                 'type'                      => 'surat_permohonan',
                 'file_path'                 => $suratPath,
                 'file_name'                 => basename($suratPath),
-                'original_name'             => $suratFile->getClientOriginalName(),
+                'original_name'             => $this->sanitizeFilename($suratFile->getClientOriginalName()),
             ]);
         }
 
@@ -164,6 +164,20 @@ class InternshipApplicationController extends Controller
             abort(404, 'File tidak ditemukan di server.');
         }
 
-        return Storage::download($document->file_path, $document->original_name);
+        return Storage::download($document->file_path, $this->sanitizeFilename($document->original_name));
+    }
+
+    /**
+     * Sanitize a filename to prevent path traversal and header injection.
+     * Keeps only alphanumeric characters, dots, dashes, and underscores.
+     */
+    private function sanitizeFilename(string $filename): string
+    {
+        // Strip directory separators and null bytes
+        $filename = basename(str_replace(['\\', '\0'], '', $filename));
+        // Replace any character that is not alphanumeric, dot, dash, or underscore
+        $filename = preg_replace('/[^\w.\-]/', '_', $filename);
+        // Collapse multiple underscores/dots
+        return preg_replace('/_{2,}/', '_', $filename) ?: 'document';
     }
 }
