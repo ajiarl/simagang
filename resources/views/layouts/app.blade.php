@@ -19,7 +19,8 @@
         /* ── Sidebar ── */
         .sidebar {
             width: 260px;
-            height: 100vh;
+            height: 100%;
+            height: 100dvh;
             background: #f9f9ff;
             border-right: 1px solid #c2c6d3;
             display: flex;
@@ -279,7 +280,7 @@
         </nav>
 
         {{-- Logout Button --}}
-        <div style="padding: 16px; border-top: 1px solid #c2c6d3; margin: 0 8px;">
+        <div style="padding: 16px; border-top: 1px solid #c2c6d3; margin: 0 8px; margin-top: auto; position: sticky; bottom: 0; background: #f9f9ff; z-index: 10;">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn-secondary" style="width: 100%; justify-content: center;">
