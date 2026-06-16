@@ -26,6 +26,10 @@ class DocumentController extends Controller
     {
         $this->authorize('view', $document->internshipApplication);
 
+        if (!Storage::exists($document->file_path)) {
+            abort(404, 'File tidak ditemukan di server.');
+        }
+
         return Storage::download(
             $document->file_path, 
             $document->original_name
