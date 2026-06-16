@@ -19,14 +19,13 @@
         /* ── Sidebar ── */
         .sidebar {
             width: 260px;
-            height: 100%;
-            height: 100dvh;
             background: #f9f9ff;
             border-right: 1px solid #c2c6d3;
             display: flex;
             flex-direction: column;
             position: fixed;
             top: 0;
+            bottom: 0;
             left: 0;
             z-index: 20;
             transition: transform 300ms ease;
@@ -36,7 +35,6 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.5);
-            min-height: 100vh;
             z-index: 15;
         }
         @media (max-width: 1023px) {
