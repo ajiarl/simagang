@@ -38,7 +38,7 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping
             $application->user->nim,
             $application->company->name,
             $attendances->where('status', 'present')->count(),
-            $attendances->where('status', 'permission')->count(),
+            $attendances->where('status', 'permit')->count(),
             $attendances->where('status', 'sick')->count(),
             $attendances->where('status', 'absent')->count(),
         ];
