@@ -61,9 +61,6 @@
                             <td style="padding: 16px 20px; vertical-align: middle;">
                                 <p class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $dosen->name }}</p>
                                 <p class="text-label-sm" style="color: #737782;">{{ $dosen->email }}</p>
-                                @if($dosen->phone)
-                                    <p class="text-label-sm" style="color: #737782;">{{ $dosen->phone }}</p>
-                                @endif
                             </td>
                             <td class="col-fakultas" style="padding: 16px 20px; vertical-align: middle;">
                                 <p class="text-body-sm" style="color: #191c20;">{{ $dosen->faculty ?? '-' }}</p>
