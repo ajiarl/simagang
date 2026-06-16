@@ -7,7 +7,7 @@
 <div style="margin-bottom: 24px; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
     
     {{-- Info Mahasiswa --}}
-    <div class="card" style="flex: 1; min-width: 300px;">
+    <div class="card" style="flex: 1; min-width: 100%; max-width: 300px;">
         <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3;">
             <h3 class="text-headline-sm" style="color: #191c20;">Profil Mahasiswa</h3>
         </div>

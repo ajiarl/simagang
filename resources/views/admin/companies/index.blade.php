@@ -16,7 +16,7 @@
 <div class="card" style="margin-bottom: 16px;">
     <div style="padding: 16px 20px;">
         <form method="GET" action="{{ route('admin.companies.index') }}" style="display: flex; gap: 8px;">
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari perusahaan berdasarkan nama, email, atau telepon..." class="form-input" style="flex: 1; min-width: 300px;">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari perusahaan berdasarkan nama, email, atau telepon..." class="form-input" style="flex: 1; min-width: 100%; max-width: 300px;">
             <button type="submit" class="btn-primary">
                 <span class="material-symbols-outlined" style="font-size: 18px;">search</span> Cari
             </button>

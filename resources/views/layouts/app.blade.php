@@ -318,7 +318,7 @@
                         @endif
                     </button>
                     
-                    <div class="user-dropdown-menu" id="notifMenu" style="width: 320px; right: -10px; max-height: 400px; overflow-y: auto;">
+                    <div class="user-dropdown-menu" id="notifMenu" style="width: 100%; max-width: 320px; right: -10px; max-height: 400px; overflow-y: auto;">
                         <div style="padding: 12px; border-bottom: 1px solid #e2e2e9; display: flex; justify-content: space-between; align-items: center;">
                             <span style="font-weight: 600; color: #191c20;">Notifikasi</span>
                             @if(auth()->user()->unreadNotifications->count() > 0)
