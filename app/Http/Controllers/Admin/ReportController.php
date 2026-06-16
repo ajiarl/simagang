@@ -36,7 +36,8 @@ class ReportController extends Controller
     {
         $application = null;
         if ($applicationId) {
-            $application = InternshipApplication::find($applicationId);
+            $application = InternshipApplication::whereIn('status', ['approved', 'completed'])
+                ->find($applicationId);
         } elseif ($request->has('user_id')) {
             $application = InternshipApplication::where('user_id', $request->user_id)
                 ->whereIn('status', ['approved', 'completed'])
