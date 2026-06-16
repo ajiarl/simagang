@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 // Manajemen Mahasiswa
 Route::resource('students', StudentController::class)->except(['destroy']);
 
+// Manajemen Dosen
+Route::resource('lecturers', App\Http\Controllers\Admin\LecturerController::class)->except(['destroy']);
+
 // Manajemen Perusahaan
 Route::resource('companies', CompanyController::class);
 

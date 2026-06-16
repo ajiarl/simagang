@@ -247,6 +247,9 @@
                 <a href="{{ route('admin.students.index') }}" class="nav-item @if(request()->routeIs('admin.students.*')) active @endif">
                     <span class="material-symbols-outlined">school</span> Mahasiswa
                 </a>
+                <a href="{{ route('admin.lecturers.index') }}" class="nav-item @if(request()->routeIs('admin.lecturers.*')) active @endif">
+                    <span class="material-symbols-outlined">person_search</span> Dosen Pembimbing
+                </a>
                 <a href="{{ route('admin.companies.index') }}" class="nav-item @if(request()->routeIs('admin.companies.*')) active @endif">
                     <span class="material-symbols-outlined">business</span> Perusahaan
                 </a>
