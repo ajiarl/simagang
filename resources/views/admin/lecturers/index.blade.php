@@ -71,6 +71,9 @@
                             </td>
                             <td class="col-aksi" style="padding: 16px 20px;">
                                 <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                                    <a href="{{ route('admin.lecturers.show', $dosen) }}" class="text-label-md" style="color: #0058be; text-decoration: none; padding: 6px 8px; display: inline-flex; align-items: center;">
+                                        Detail
+                                    </a>
                                     <a href="{{ route('admin.lecturers.edit', $dosen) }}" class="text-label-md" style="color: #0058be; text-decoration: none; padding: 6px 8px; display: inline-flex; align-items: center;">
                                         Edit
                                     </a>

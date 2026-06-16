@@ -75,7 +75,19 @@ class LecturerController extends Controller
         return redirect()->route('admin.lecturers.index')->with('success', 'Data dosen pembimbing berhasil ditambahkan.');
     }
 
-
+    /**
+     * Display the specified lecturer.
+     */
+    public function show(User $lecturer)
+    {
+        if (!$lecturer->hasRole('dosen')) {
+            abort(404);
+        }
+        
+        $lecturer->load(['supervisedApplications.internshipPeriod', 'supervisedApplications.user']);
+        
+        return view('admin.lecturers.show', compact('lecturer'));
+    }
 
     /**
      * Show the form for editing the specified lecturer.
