@@ -49,29 +49,29 @@ class InternshipApplicationController extends Controller
 
         // Upload KTM
         if ($request->hasFile('ktm_file')) {
-            $ktmPath = $request->file('ktm_file')->store('documents/ktm');
+            $ktmFile = $request->file('ktm_file');
+            $ktmPath = $ktmFile->store('documents/ktm');
             Document::create([
                 'user_id'                   => auth()->id(),
                 'internship_application_id' => $application->id,
-                'name'                      => 'KTM',
                 'type'                      => 'ktm',
                 'file_path'                 => $ktmPath,
-                'file_extension'            => $request->file('ktm_file')->extension(),
-                'status'                    => 'submitted',
+                'file_name'                 => basename($ktmPath),
+                'original_name'             => $ktmFile->getClientOriginalName(),
             ]);
         }
 
         // Upload Surat Permohonan
         if ($request->hasFile('surat_permohonan')) {
-            $suratPath = $request->file('surat_permohonan')->store('documents/surat_permohonan');
+            $suratFile = $request->file('surat_permohonan');
+            $suratPath = $suratFile->store('documents/surat_permohonan');
             Document::create([
                 'user_id'                   => auth()->id(),
                 'internship_application_id' => $application->id,
-                'name'                      => 'Surat Permohonan',
                 'type'                      => 'surat_permohonan',
                 'file_path'                 => $suratPath,
-                'file_extension'            => $request->file('surat_permohonan')->extension(),
-                'status'                    => 'submitted',
+                'file_name'                 => basename($suratPath),
+                'original_name'             => $suratFile->getClientOriginalName(),
             ]);
         }
 
@@ -158,10 +158,6 @@ class InternshipApplicationController extends Controller
         // Verify document belongs to this application
         if ($document->internship_application_id !== $application->id) {
             abort(404);
-        }
-        
-        if (!Storage::exists($document->file_path)) {
-            abort(404, 'File tidak ditemukan di server.');
         }
 
         return Storage::download($document->file_path, $document->original_name);
