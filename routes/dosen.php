@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/logbooks', [LogbookController::class, 'index'])->name('logbooks.index');
 Route::get('/logbooks/{student_id}', [LogbookController::class, 'showStudent'])->name('logbooks.student');
-Route::put('/logbooks/{logbook}', [LogbookController::class, 'update'])->name('logbooks.update');
 Route::post('/logbooks/{logbook}/review', [LogbookController::class, 'review'])->name('logbooks.review');
 
 Route::get('/penilaian', [AssessmentController::class, 'index'])->name('assessments.index');
