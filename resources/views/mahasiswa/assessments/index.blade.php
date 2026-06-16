@@ -44,7 +44,7 @@
 
         @foreach($assessors as $assessor)
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; gap: 12px;">
+                <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #0058be;">{{ $assessor['icon'] }}</span>
                     <h3 class="text-headline-sm" style="color: #191c20; margin: 0;">{{ $assessor['title'] }}</h3>
                 </div>

@@ -15,7 +15,7 @@
 {{-- Search Card --}}
 <div class="card" style="margin-bottom: 16px;">
     <div style="padding: 16px 20px;">
-        <form method="GET" action="{{ route('admin.companies.index') }}" style="display: flex; gap: 8px;">
+        <form method="GET" action="{{ route('admin.companies.index') }}" style="display: flex; gap: 8px;; flex-wrap: wrap;">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari perusahaan berdasarkan nama, email, atau telepon..." class="form-input" style="flex: 1; min-width: 100%; max-width: 300px;">
             <button type="submit" class="btn-primary">
                 <span class="material-symbols-outlined" style="font-size: 18px;">search</span> Cari
@@ -69,7 +69,7 @@
                             @endif
                         </td>
                         <td style="padding: 16px 20px;">
-                            <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
+                            <div style="display: flex; gap: 8px; justify-content: center; align-items: center;; flex-wrap: wrap;">
                                 <a href="{{ route('admin.companies.show', $company) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                     Detail
                                 </a>

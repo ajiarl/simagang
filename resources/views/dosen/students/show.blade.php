@@ -20,7 +20,7 @@
         {{-- Profile/Internship Info --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">info</span> Informasi Magang
                 </h3>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -51,7 +51,7 @@
         {{-- Assessment Card --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">grade</span> Penilaian Magang
                 </h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -152,7 +152,7 @@
         {{-- Logbook Summary --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">menu_book</span> Aktivitas Logbook
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-bottom: 20px;">
@@ -199,7 +199,7 @@
         {{-- Attendance Summary --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">event_available</span> Kehadiran / Presensi
                 </h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 8px; margin-bottom: 20px;">

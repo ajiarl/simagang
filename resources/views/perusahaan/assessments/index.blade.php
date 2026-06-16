@@ -114,27 +114,27 @@
                     <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
                         <p class="text-body-sm" style="color: #424751;">Berikan nilai 0 hingga 100 untuk masing-masing aspek kinerja magang:</p>
                         
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;; flex-wrap: wrap;">
                             <label for="discipline_{{ $application->id }}" class="text-label-md" style="flex: 1;">Kedisiplinan</label>
                             <input type="number" name="discipline" id="discipline_{{ $application->id }}" required min="0" max="100" style="width: 100px; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;" value="{{ old('discipline') }}">
                         </div>
                         
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;; flex-wrap: wrap;">
                             <label for="attitude_{{ $application->id }}" class="text-label-md" style="flex: 1;">Sikap & Perilaku</label>
                             <input type="number" name="attitude" id="attitude_{{ $application->id }}" required min="0" max="100" style="width: 100px; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;" value="{{ old('attitude') }}">
                         </div>
                         
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;; flex-wrap: wrap;">
                             <label for="skills_{{ $application->id }}" class="text-label-md" style="flex: 1;">Kemampuan Teknis</label>
                             <input type="number" name="skills" id="skills_{{ $application->id }}" required min="0" max="100" style="width: 100px; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;" value="{{ old('skills') }}">
                         </div>
 
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;; flex-wrap: wrap;">
                             <label for="communication_{{ $application->id }}" class="text-label-md" style="flex: 1;">Komunikasi</label>
                             <input type="number" name="communication" id="communication_{{ $application->id }}" required min="0" max="100" style="width: 100px; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;" value="{{ old('communication') }}">
                         </div>
 
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;; flex-wrap: wrap;">
                             <label for="initiative_{{ $application->id }}" class="text-label-md" style="flex: 1;">Inisiatif</label>
                             <input type="number" name="initiative" id="initiative_{{ $application->id }}" required min="0" max="100" style="width: 100px; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;" value="{{ old('initiative') }}">
                         </div>
@@ -146,7 +146,7 @@
                         </div>
                     </div>
                     
-                    <div style="padding: 16px 20px; border-top: 1px solid #c2c6d3; display: flex; justify-content: flex-end; gap: 12px; background: #f8fafc; border-radius: 0 0 12px 12px;">
+                    <div style="padding: 16px 20px; border-top: 1px solid #c2c6d3; display: flex; justify-content: flex-end; gap: 12px; background: #f8fafc; border-radius: 0 0 12px 12px;; flex-wrap: wrap;">
                         <button type="button" onclick="document.getElementById('modal-{{ $application->id }}').style.display='none'" class="btn-secondary">Batal</button>
                         <button type="submit" class="btn-primary">Simpan Penilaian</button>
                     </div>

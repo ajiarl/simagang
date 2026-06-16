@@ -86,7 +86,7 @@
                                 <x-form-error name="supervisor_note" />
                             </div>
                             
-                            <div style="display: flex; gap: 12px;">
+                            <div style="display: flex; gap: 12px;; flex-wrap: wrap;">
                                 <button type="submit" name="action" value="approve" class="btn-primary" style="background: #166534;">
                                     <span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span> Setujui Logbook
                                 </button>

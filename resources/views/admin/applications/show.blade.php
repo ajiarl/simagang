@@ -86,7 +86,7 @@
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         @foreach($application->documents as $doc)
                             <li style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                <div style="display: flex; align-items: center; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                                     <span class="material-symbols-outlined" style="color: #0058be;">description</span>
                                     <span class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $doc->name }}</span>
                                 </div>

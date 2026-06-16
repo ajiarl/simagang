@@ -197,7 +197,7 @@
     <aside class="sidebar" id="sidebar">
         {{-- Logo --}}
         <div style="padding: 24px 16px 20px; display: flex; align-items: center; justify-content: space-between;">
-            <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 9999px; background: #1a56a0; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #ffffff; font-size: 22px;">school</span>
                 </div>
@@ -301,14 +301,14 @@
     <div class="main-wrapper">
         {{-- Top Bar --}}
         <header class="topbar">
-            <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 16px;; flex-wrap: wrap;">
                 {{-- Hamburger (mobile) --}}
                 <button onclick="toggleSidebar()" style="display: none; background: none; border: none; cursor: pointer; padding: 4px;" class="hamburger-btn">
                     <span class="material-symbols-outlined" style="font-size: 24px; color: #424751;">menu</span>
                 </button>
                 <h1 class="text-headline-sm" style="color: #191c20;">@yield('page-title', 'Dashboard')</h1>
             </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 16px;; flex-wrap: wrap;">
                 {{-- Notification Bell --}}
                 <div class="notification-bell user-dropdown" id="notifDropdown">
                     <button onclick="toggleNotifDropdown()" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
@@ -332,7 +332,7 @@
                         <div style="display: flex; flex-direction: column;">
                             @forelse(auth()->user()->notifications()->take(5)->get() as $notification)
                                 <a href="{{ $notification->data['url'] ?? '#' }}" class="nav-item" style="padding: 12px; margin: 0; border-radius: 0; border-bottom: 1px solid #f0f0f4; {{ is_null($notification->read_at) ? 'background: #f8fafc;' : '' }}">
-                                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                    <div style="display: flex; gap: 12px; align-items: flex-start;; flex-wrap: wrap;">
                                         <span class="material-symbols-outlined" style="color: {{ $notification->data['color'] ?? '#0058be' }};">{{ $notification->data['icon'] ?? 'notifications' }}</span>
                                         <div style="flex: 1;">
                                             <div style="font-size: 13px; font-weight: 600; color: #191c20; margin-bottom: 4px;">{{ $notification->data['title'] ?? 'Notifikasi Baru' }}</div>
@@ -356,7 +356,7 @@
 
                 {{-- User Dropdown --}}
                 <div class="user-dropdown" id="userDropdown">
-                    <button onclick="toggleDropdown()" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 4px;">
+                    <button onclick="toggleDropdown()" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 4px;; flex-wrap: wrap;">
                         <div class="avatar">{{ auth()->user()->initials }}</div>
                         <span class="text-body-sm" style="color: #191c20;">{{ auth()->user()->name }}</span>
                         <span class="material-symbols-outlined" style="font-size: 18px; color: #737782;">expand_more</span>

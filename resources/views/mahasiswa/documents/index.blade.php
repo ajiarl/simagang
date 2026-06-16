@@ -33,7 +33,7 @@
             {{-- Info Card --}}
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                         <span class="material-symbols-outlined" style="color: #003e7e;">info</span> Informasi Magang Aktif
                     </h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
@@ -58,7 +58,7 @@
             {{-- Document List --}}
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
                         <span class="material-symbols-outlined" style="color: #003e7e;">folder_open</span> Berkas yang Diunggah
                     </h3>
                     @if($application->documents->isEmpty())
@@ -67,7 +67,7 @@
                         <div style="display: flex; flex-direction: column; gap: 12px;">
                             @foreach($application->documents as $doc)
                                 <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px solid #c2c6d3; border-radius: 8px; background: #ffffff;">
-                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
                                         <span class="chip-pending" style="background: #e2e2e9; color: #424751; padding: 4px 8px; border-radius: 4px; font-size: 11px;">
                                             {{ strtoupper($doc->type) }}
                                         </span>

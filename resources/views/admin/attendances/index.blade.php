@@ -7,7 +7,7 @@
 <div class="card" style="margin-bottom: 24px;">
     <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; justify-content: space-between; align-items: center;">
         <h3 class="text-headline-sm" style="color: #191c20;">Filter Rekap Kehadiran</h3>
-        <a href="{{ route('admin.reports.attendances.export') }}" class="btn-primary" style="text-decoration: none; padding: 8px 16px; display: flex; align-items: center; gap: 8px;">
+        <a href="{{ route('admin.reports.attendances.export') }}" class="btn-primary" style="text-decoration: none; padding: 8px 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
             <span class="material-symbols-outlined" style="font-size: 18px;">download</span> Export Excel
         </a>
     </div>

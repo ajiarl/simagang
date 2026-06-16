@@ -20,7 +20,7 @@
 
     <div style="display: flex; flex-direction: column;">
         @forelse($notifications as $notification)
-            <div style="padding: 16px 20px; border-bottom: 1px solid #e2e2e9; display: flex; gap: 16px; align-items: flex-start; {{ is_null($notification->read_at) ? 'background: #f8fafc;' : '' }}">
+            <div style="padding: 16px 20px; border-bottom: 1px solid #e2e2e9; display: flex; gap: 16px; align-items: flex-start; {{ is_null($notification->read_at) ? 'background: #f8fafc;' : '' }}; flex-wrap: wrap;">
                 <div style="background: {{ is_null($notification->read_at) ? '#dcfce7' : '#f0f4f8' }}; padding: 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: {{ $notification->data['color'] ?? '#0058be' }};">{{ $notification->data['icon'] ?? 'notifications' }}</span>
                 </div>
