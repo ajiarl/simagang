@@ -16,10 +16,10 @@ class AssessmentController extends Controller
     {
         $companyId = auth()->user()->company_id;
 
-        // Get approved applications for this company
+        // Get approved/completed applications for this company
         $applications = InternshipApplication::with(['user', 'assessments'])
             ->where('company_id', $companyId)
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
             ->get();
 
         return view('perusahaan.assessments.index', compact('applications'));

@@ -14,7 +14,10 @@ class LogbookController extends Controller
      */
     public function index()
     {
-        $application = auth()->user()->internshipApplications()->where('status', 'approved')->first();
+        $application = auth()->user()->internshipApplications()
+            ->whereIn('status', ['approved', 'completed'])
+            ->latest()
+            ->first();
 
         if (!$application) {
             return redirect()->route('mahasiswa.dashboard')
@@ -33,6 +36,7 @@ class LogbookController extends Controller
      */
     public function create()
     {
+        // Can only create new logbook entries for active (approved) internships
         $application = auth()->user()->internshipApplications()->where('status', 'approved')->first();
 
         if (!$application) {
@@ -48,6 +52,7 @@ class LogbookController extends Controller
      */
     public function store(Request $request)
     {
+        // Can only store new logbook entries for active (approved) internships
         $application = auth()->user()->internshipApplications()->where('status', 'approved')->first();
 
         if (!$application) {

@@ -12,7 +12,7 @@ class AssessmentExport implements FromCollection, WithHeadings, WithMapping
     public function collection()
     {
         return InternshipApplication::with(['user', 'company', 'dosen', 'assessments'])
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
             ->get();
     }
 

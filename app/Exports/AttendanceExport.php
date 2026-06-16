@@ -12,7 +12,7 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping
     public function collection()
     {
         return InternshipApplication::with(['user', 'company', 'attendances'])
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
             ->get();
     }
 

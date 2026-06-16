@@ -14,9 +14,10 @@ class AttendanceController extends Controller
     {
         $user = auth()->user();
 
-        // Get the active approved application
+        // Get the active approved application (also allow completed for history view)
         $application = InternshipApplication::where('user_id', $user->id)
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
+            ->latest()
             ->first();
 
         if (!$application) {

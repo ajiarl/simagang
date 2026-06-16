@@ -35,8 +35,10 @@ class DocumentController extends Controller
     public function downloadSurat(InternshipApplication $application)
     {
         if ($application->user_id !== auth()->id()) abort(403);
-        if ($application->status !== 'approved') abort(403);
+        // Allow both 'approved' and 'completed' — magang selesai tetap bisa download surat
+        if (!in_array($application->status, ['approved', 'completed'])) abort(403);
 
+        $application->load(['user', 'company', 'internshipPeriod']);
         $pdf = Pdf::loadView('pdf.surat-pengantar', compact('application'));
         return $pdf->download('surat-pengantar-magang.pdf');
     }

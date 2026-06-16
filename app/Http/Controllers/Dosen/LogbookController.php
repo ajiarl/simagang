@@ -14,13 +14,13 @@ class LogbookController extends Controller
      */
     public function index()
     {
-        // Get applications where this dosen is assigned and status is approved
+        // Get applications where this dosen is assigned — include completed for history
         $applications = InternshipApplication::with(['user', 'company', 'logbooks' => function ($query) {
                 // Count pending logbooks
                 $query->where('status', 'submitted');
             }])
             ->where('dosen_id', auth()->id())
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
             ->get();
 
         return view('dosen.logbooks.index', compact('applications'));

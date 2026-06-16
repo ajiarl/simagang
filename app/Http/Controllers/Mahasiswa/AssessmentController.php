@@ -12,10 +12,11 @@ class AssessmentController extends Controller
     {
         $user = auth()->user();
 
-        // Get the active approved application with its assessments
+        // Get the active approved application with its assessments (also show for completed)
         $application = InternshipApplication::with('assessments')
             ->where('user_id', $user->id)
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
+            ->latest()
             ->first();
 
         if (!$application) {

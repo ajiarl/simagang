@@ -12,11 +12,11 @@ class AttendanceController extends Controller
     {
         $companyId = auth()->user()->company_id;
 
-        // Get attendances for this company's active applications today
+        // Get attendances for this company's applications (active and completed for history)
         $attendances = Attendance::with('user', 'verifier')
             ->whereHas('internshipApplication', function ($q) use ($companyId) {
                 $q->where('company_id', $companyId)
-                  ->where('status', 'approved');
+                  ->whereIn('status', ['approved', 'completed']);
             })
             ->orderBy('date', 'desc')
             ->get();

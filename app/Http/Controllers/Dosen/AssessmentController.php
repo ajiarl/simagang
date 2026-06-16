@@ -16,10 +16,10 @@ class AssessmentController extends Controller
     {
         $dosenId = auth()->id();
 
-        // Get approved applications supervised by this dosen
+        // Get approved/completed applications supervised by this dosen
         $applications = InternshipApplication::with(['user', 'company', 'assessments'])
             ->where('dosen_id', $dosenId)
-            ->where('status', 'approved')
+            ->whereIn('status', ['approved', 'completed'])
             ->get();
 
         return view('dosen.assessments.index', compact('applications'));
