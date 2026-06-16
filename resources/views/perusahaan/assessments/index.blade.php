@@ -42,7 +42,8 @@
             </div>
                         <x-form-error name="initiative" />
         @else
-            <table style="width: 100%; border-collapse: collapse;">
+            <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f8fafc;">
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">Mahasiswa</th>
@@ -86,6 +87,7 @@
                     @endforeach
                 </tbody>
             </table>
+</div>
         @endif
     </div>
 </div>

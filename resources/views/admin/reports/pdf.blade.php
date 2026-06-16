@@ -28,25 +28,30 @@
 
     <div class="section">
         <h3>Biodata Peserta</h3>
-        <table>
+        <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table>
             <tr><th width="30%">Nama</th><td>{{ $application->user->name }}</td></tr>
             <tr><th>NIM</th><td>{{ $application->user->nim }}</td></tr>
             <tr><th>Jurusan</th><td>{{ $application->user->major ?? '-' }}</td></tr>
         </table>
+</div>
     </div>
 
     <div class="section">
         <h3>Informasi Magang</h3>
-        <table>
+        <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table>
             <tr><th width="30%">Perusahaan</th><td>{{ $application->company->name }}</td></tr>
             <tr><th>Periode Magang</th><td>{{ \Carbon\Carbon::parse($application->start_date)->format('d M Y') }} s/d {{ \Carbon\Carbon::parse($application->end_date)->format('d M Y') }}</td></tr>
             <tr><th>Dosen Pembimbing</th><td>{{ $application->dosen->name ?? '-' }}</td></tr>
         </table>
+</div>
     </div>
 
     <div class="section">
         <h3>Rekapitulasi Kehadiran</h3>
-        <table>
+        <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table>
             <tr>
                 <th style="text-align: center;">Hadir</th>
                 <th style="text-align: center;">Tidak Hadir (Izin/Sakit/Alpa)</th>
@@ -56,12 +61,14 @@
                 <td style="text-align: center; font-size: 18px; font-weight: bold;">{{ $totalAbsent }} Hari</td>
             </tr>
         </table>
+</div>
     </div>
 
     <div class="section">
         <h3>Rekapitulasi Penilaian</h3>
         @if($finalScore)
-            <table>
+            <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table>
                 <tr>
                     <th width="40%">Aspek Penilaian</th>
                     <th>Nilai Dosen (50%)</th>
@@ -98,6 +105,7 @@
                     <th>{{ $perusahaanAssessment->final_score }}</th>
                 </tr>
             </table>
+</div>
 
             <div class="highlight-box">
                 <div style="font-size: 16px; color: #424751;">Nilai Akhir Magang</div>

@@ -38,7 +38,8 @@
                 <p class="text-body-md" style="color: #737782;">Data kehadiran tidak ditemukan.</p>
             </div>
         @else
-            <table style="width: 100%; border-collapse: collapse;">
+            <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f8fafc;">
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3;">Tanggal</th>
@@ -75,6 +76,7 @@
                     @endforeach
                 </tbody>
             </table>
+</div>
             
             <div style="padding: 16px 20px; border-top: 1px solid #c2c6d3;">
                 {{ $attendances->links() }}

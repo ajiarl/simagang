@@ -22,6 +22,7 @@
 </div>
 @endif
 
+<div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
 <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
     <thead>
         <tr style="background-color: #f1f1f1;">
@@ -56,4 +57,5 @@
         @endforelse
     </tbody>
 </table>
+</div>
 @endsection

@@ -48,7 +48,8 @@
                 <p class="text-body-md" style="color: #737782;">Tidak ada data mahasiswa ditemukan.</p>
             </div>
         @else
-            <table style="width: 100%; border-collapse: collapse;">
+            <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+<table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f8fafc;">
                         <th class="text-label-md" style="color: #424751; padding: 12px 20px; text-align: left; border-bottom: 1px solid #c2c6d3; width: 48px;">No.</th>
@@ -88,6 +89,7 @@
                     @endforeach
                 </tbody>
             </table>
+</div>
         @endif
     </div>
     @if($students->hasPages())
