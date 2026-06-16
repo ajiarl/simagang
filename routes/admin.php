@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('students', StudentController::class)->except(['destroy']);
 
 // Manajemen Dosen
-Route::resource('lecturers', App\Http\Controllers\Admin\LecturerController::class)->except(['destroy']);
+Route::resource('lecturers', App\Http\Controllers\Admin\LecturerController::class)->except(['show', 'destroy']);
 
 // Manajemen Perusahaan
 Route::resource('companies', CompanyController::class);

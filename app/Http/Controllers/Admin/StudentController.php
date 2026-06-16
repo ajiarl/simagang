@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -75,7 +76,7 @@ class StudentController extends Controller
             'nim'      => $request->nim,
             'email'    => $request->email,
             'phone'    => $request->phone,
-            'password' => \Hash::make($request->password),
+            'password' => Hash::make($request->password),
         ]);
 
         $student->assignRole('mahasiswa');
@@ -139,7 +140,7 @@ class StudentController extends Controller
         ]));
 
         if ($request->filled('password')) {
-            $student->update(['password' => \Hash::make($request->password)]);
+            $student->update(['password' => Hash::make($request->password)]);
         }
 
         return redirect()->route('admin.students.index')->with('success', 'Data mahasiswa berhasil diperbarui.');
