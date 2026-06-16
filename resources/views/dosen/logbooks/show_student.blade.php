@@ -12,7 +12,7 @@
             <h3 class="text-headline-sm" style="color: #191c20;">Profil Mahasiswa</h3>
         </div>
         <div style="padding: 20px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
                 <div>
                     <p class="text-label-sm" style="color: #737782; margin-bottom: 4px;">Nama Mahasiswa</p>
                     <p class="text-body-md" style="color: #191c20; font-weight: 500;">{{ $application->user->name }} ({{ $application->user->nim }})</p>
@@ -86,7 +86,7 @@
                                 <x-form-error name="supervisor_note" />
                             </div>
                             
-                            <div style="display: flex; gap: 12px;; flex-wrap: wrap;">
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                                 <button type="submit" name="action" value="approve" class="btn-primary" style="background: #166534;">
                                     <span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span> Setujui Logbook
                                 </button>

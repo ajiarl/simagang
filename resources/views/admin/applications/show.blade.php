@@ -4,7 +4,7 @@
 @section('page-title', 'Detail Pengajuan')
 
 @section('content')
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
     {{-- Kolom Kiri: Info Detail --}}
     <div>
         <div class="card" style="margin-bottom: 24px;">
@@ -19,7 +19,7 @@
                 @endif
             </div>
             <div style="padding: 20px;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px;">
                     <div>
                         <p class="text-label-sm" style="color: #737782; margin-bottom: 4px;">Nama Mahasiswa</p>
                         <p class="text-body-md" style="color: #191c20; font-weight: 500;">{{ $application->user->name }} ({{ $application->user->nim }})</p>
@@ -50,7 +50,7 @@
                         <p class="text-label-sm" style="color: #737782; margin-bottom: 8px;">Dosen Pembimbing</p>
                         <p class="text-body-md" style="color: #191c20; font-weight: 500;">{{ $application->dosen->name ?? '-' }}</p>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                         <div>
                             <p class="text-label-sm" style="color: #737782; margin-bottom: 4px;">Tanggal Mulai</p>
                             <p class="text-body-md" style="color: #191c20; font-weight: 500;">{{ $application->start_date ? $application->start_date->format('d M Y') : '-' }}</p>
@@ -86,7 +86,7 @@
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         @foreach($application->documents as $doc)
                             <li style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                <div style="display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                                     <span class="material-symbols-outlined" style="color: #0058be;">description</span>
                                     <span class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $doc->name }}</span>
                                 </div>

@@ -17,11 +17,11 @@
 </div>
 
 {{-- Stats Grid --}}
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
     {{-- Mahasiswa Magang --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #d6e3ff; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #003e7e; font-size: 20px;">groups</span>
                 </div>
@@ -42,7 +42,7 @@
     {{-- Presensi Hari Ini --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #dcfce7; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #166534; font-size: 20px;">event_available</span>
                 </div>
@@ -63,7 +63,7 @@
     {{-- Belum Dinilai --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #fef08a; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #854d0e; font-size: 20px;">grade</span>
                 </div>
@@ -104,14 +104,14 @@
         @else
             @foreach($students as $app)
             <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 0; {{ !$loop->last ? 'border-bottom: 1px solid #e2e2e9;' : '' }}">
-                <div style="display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <div class="avatar" style="width: 40px; height: 40px; font-size: 14px;">{{ $app->user->initials }}</div>
                     <div>
                         <p class="text-body-md" style="color: #191c20; font-weight: 500;">{{ $app->user->name }}</p>
                         <p class="text-label-sm" style="color: #737782;">{{ $app->user->nim ?? 'NIM' }} · {{ $app->user->department ?? 'Prodi' }}</p>
                     </div>
                 </div>
-                <div style="display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     @php
                         $todayPresent = \App\Models\Attendance::where('user_id', $app->user_id)
                             ->where('date', today())

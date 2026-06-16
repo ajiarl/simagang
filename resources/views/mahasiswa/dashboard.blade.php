@@ -57,11 +57,11 @@
     </div>
 
     {{-- Stats Grid --}}
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
         {{-- Hari Magang --}}
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                     <div style="width: 40px; height: 40px; border-radius: 8px; background: #d6e3ff; display: flex; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="color: #003e7e; font-size: 20px;">calendar_today</span>
                     </div>
@@ -80,7 +80,7 @@
         {{-- Logbook --}}
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                     <div style="width: 40px; height: 40px; border-radius: 8px; background: #dcfce7; display: flex; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="color: #166534; font-size: 20px;">menu_book</span>
                     </div>
@@ -94,7 +94,7 @@
         {{-- Presensi --}}
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                     <div style="width: 40px; height: 40px; border-radius: 8px; background: #fef08a; display: flex; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="color: #854d0e; font-size: 20px;">qr_code</span>
                     </div>
@@ -108,7 +108,7 @@
         {{-- Nilai --}}
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                     <div style="width: 40px; height: 40px; border-radius: 8px; background: #ffdcc6; display: flex; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="color: #673000; font-size: 20px;">grade</span>
                     </div>
@@ -127,7 +127,7 @@
     </div>
 
     {{-- Two Column Layout --}}
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
         {{-- Logbook Terbaru --}}
         <div>
             <div class="card" style="margin-bottom: 24px;">

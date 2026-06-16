@@ -17,11 +17,11 @@
 </div>
 
 {{-- Stats Grid --}}
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
     {{-- Total Mahasiswa --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #d6e3ff; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #003e7e; font-size: 20px;">school</span>
                 </div>
@@ -34,7 +34,7 @@
     {{-- Magang Aktif --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #dcfce7; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #166534; font-size: 20px;">work</span>
                 </div>
@@ -47,7 +47,7 @@
     {{-- Perusahaan Mitra --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #fef08a; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #854d0e; font-size: 20px;">business</span>
                 </div>
@@ -60,7 +60,7 @@
     {{-- Pengajuan Pending --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #ffdcc6; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #673000; font-size: 20px;">hourglass_top</span>
                 </div>
@@ -75,7 +75,7 @@
 </div>
 
 {{-- Two Column Layout --}}
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
     {{-- Pengajuan Terbaru --}}
     <div class="card">
         <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; justify-content: space-between;">
@@ -133,7 +133,7 @@
         </div>
         <div style="padding: 20px;">
             @if($stats['periode_aktif'])
-                <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="font-size: 18px; color: #166534; margin-top: 2px;">check_circle</span>
                     <div>
                         <p class="text-body-sm" style="color: #191c20; font-weight: 500;">Periode Aktif</p>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             @else
-                <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9;; flex-wrap: wrap;">
+                <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="font-size: 18px; color: #ba1a1a; margin-top: 2px;">warning</span>
                     <div>
                         <p class="text-body-sm" style="color: #191c20; font-weight: 500;">Tidak ada periode aktif</p>
@@ -150,7 +150,7 @@
                 </div>
             @endif
 
-            <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e2e2e9; flex-wrap: wrap;">
                 <span class="material-symbols-outlined" style="font-size: 18px; color: #0058be; margin-top: 2px;">today</span>
                 <div>
                     <p class="text-body-sm" style="color: #191c20; font-weight: 500;">Presensi Hari Ini</p>
@@ -158,7 +158,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: start; gap: 10px; padding: 12px 0; flex-wrap: wrap;">
                 <span class="material-symbols-outlined" style="font-size: 18px; color: #673000; margin-top: 2px;">rate_review</span>
                 <div>
                     <p class="text-body-sm" style="color: #191c20; font-weight: 500;">Logbook Pending Review</p>

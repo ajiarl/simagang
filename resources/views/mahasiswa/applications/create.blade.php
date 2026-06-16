@@ -59,7 +59,7 @@
             </div>
 
             <div style="margin-bottom: 24px; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                <h4 style="font-weight: 600; color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                <h4 style="font-weight: 600; color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="font-size: 20px; color: #0058be;">upload_file</span> Dokumen Persyaratan
                 </h4>
                 
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid #c2c6d3; padding-top: 20px;; flex-wrap: wrap;">
+            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid #c2c6d3; padding-top: 20px; flex-wrap: wrap;">
                 <a href="{{ route('mahasiswa.applications.index') }}" class="btn-secondary" style="text-decoration: none;">Batal</a>
                 <button type="submit" class="btn-primary">
                     <span class="material-symbols-outlined" style="font-size: 18px;">send</span> Ajukan Magang

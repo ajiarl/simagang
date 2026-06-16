@@ -8,8 +8,8 @@
     <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
         <h3 class="text-headline-sm" style="color: #191c20;">Semua Pengajuan</h3>
         
-        <div style="display: flex; gap: 12px; align-items: center;; flex-wrap: wrap;">
-            <form action="{{ route('admin.applications.index') }}" method="GET" style="display: flex; gap: 12px;; flex-wrap: wrap;">
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <form action="{{ route('admin.applications.index') }}" method="GET" style="display: flex; gap: 12px; flex-wrap: wrap;">
                 <select name="status" style="padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 8px; font-size: 14px; background: #ffffff;" onchange="this.form.submit()">
                     <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
                     <option value="submitted" {{ request('status') == 'submitted' ? 'selected' : '' }}>Menunggu (Submitted)</option>
@@ -17,7 +17,7 @@
                     <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak (Rejected)</option>
                 </select>
             </form>
-            <a href="{{ route('admin.reports.assessments.export') }}" class="btn-primary" style="text-decoration: none; padding: 8px 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+            <a href="{{ route('admin.reports.assessments.export') }}" class="btn-primary" style="text-decoration: none; padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                 <span class="material-symbols-outlined" style="font-size: 18px;">download</span> Export Nilai
             </a>
         </div>
@@ -68,7 +68,7 @@
                             @endif
                         </td>
                         <td style="padding: 16px 20px;">
-                            <div style="display: flex; gap: 8px;; flex-wrap: wrap;">
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                                 <a href="{{ route('admin.applications.show', $app) }}" class="btn-secondary" style="padding: 6px 12px; font-size: 13px; text-decoration: none;">
                                     Lihat Detail
                                 </a>

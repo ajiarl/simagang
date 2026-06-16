@@ -44,7 +44,7 @@
                 <x-form-error name="learning" />
             </div>
 
-            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid #c2c6d3; padding-top: 20px;; flex-wrap: wrap;">
+            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid #c2c6d3; padding-top: 20px; flex-wrap: wrap;">
                 <a href="{{ route('mahasiswa.logbooks.index') }}" class="btn-secondary" style="text-decoration: none;">Batal</a>
                 
                 <button type="submit" name="action" value="draft" class="btn-secondary" style="background: #f8fafc;">

@@ -13,7 +13,7 @@
 </div>
 @else
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1000px; margin: 0 auto;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
     
     {{-- Card 3: Final Combined Score --}}
     <div class="card" style="text-align: center; padding: 32px 20px; background: linear-gradient(135deg, #003e7e 0%, #0058be 100%); color: white;">
@@ -34,7 +34,7 @@
         @endif
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
         @php
             $assessors = [
                 ['title' => 'Dosen Pembimbing', 'icon' => 'school', 'data' => $dosenAssessment],
@@ -44,7 +44,7 @@
 
         @foreach($assessors as $assessor)
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
+                <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #0058be;">{{ $assessor['icon'] }}</span>
                     <h3 class="text-headline-sm" style="color: #191c20; margin: 0;">{{ $assessor['title'] }}</h3>
                 </div>

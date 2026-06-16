@@ -13,7 +13,7 @@
 </div>
 @else
 
-<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
     
     {{-- Kolom Kiri: QR Hari Ini --}}
     <div class="card">

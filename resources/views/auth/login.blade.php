@@ -242,6 +242,12 @@
         <p class="login-footer">&copy; {{ date('Y') }} Sistem Informasi Magang — Universitas</p>
     </div>
 
+    <style>
+        /* CSS Spinner */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spin { animation: spin 1s linear infinite; }
+        .btn-loading { opacity: 0.8; cursor: not-allowed; pointer-events: none; }
+    </style>
     <script>
         function togglePassword() {
             const input = document.getElementById('password');
@@ -254,8 +260,7 @@
                 icon.textContent = 'visibility_off';
             }
         }
-    </script>
-    <script>
+
         // Global double submission protection
         document.addEventListener('submit', function(e) {
             if (e.target.tagName === 'FORM') {

@@ -14,16 +14,16 @@
     </a>
 </div>
 
-<div style="display: grid; grid-template-columns: 1fr; lg:grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); lg:grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start;">
     {{-- Left Side: Info and Assessment --}}
     <div style="display: flex; flex-direction: column; gap: 24px;">
         {{-- Profile/Internship Info --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">info</span> Informasi Magang
                 </h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
                     <div>
                         <p class="text-label-sm" style="color: #737782; margin-bottom: 4px;">Mitra Industri</p>
                         <p class="text-body-sm" style="color: #191c20; font-weight: 600;">{{ $application->company->name }}</p>
@@ -51,7 +51,7 @@
         {{-- Assessment Card --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">grade</span> Penilaian Magang
                 </h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -66,7 +66,7 @@
                             @endif
                         </div>
                         @if($dosenAssessment)
-                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; text-align: center;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4px; margin-bottom: 8px; text-align: center;">
                                 <div style="background: #f3f3fa; padding: 4px; border-radius: 4px;">
                                     <p style="font-size: 10px; color: #737782;">Disiplin</p>
                                     <p style="font-size: 12px; font-weight: 600; color: #191c20;">{{ $dosenAssessment->discipline }}</p>
@@ -113,7 +113,7 @@
                             @endif
                         </div>
                         @if($companyAssessment)
-                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 8px; text-align: center;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4px; margin-bottom: 8px; text-align: center;">
                                 <div style="background: #f3f3fa; padding: 4px; border-radius: 4px;">
                                     <p style="font-size: 10px; color: #737782;">Disiplin</p>
                                     <p style="font-size: 12px; font-weight: 600; color: #191c20;">{{ $companyAssessment->discipline }}</p>
@@ -152,10 +152,10 @@
         {{-- Logbook Summary --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">menu_book</span> Aktivitas Logbook
                 </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px;">
                     <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e2e9; text-align: center;">
                         <p class="text-label-sm" style="color: #737782;">Total</p>
                         <p class="text-headline-md" style="color: #191c20; font-weight: bold; margin-top: 4px;">{{ $totalLogbook }}</p>
@@ -199,10 +199,10 @@
         {{-- Attendance Summary --}}
         <div class="card">
             <div class="card-body">
-                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;; flex-wrap: wrap;">
+                <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">event_available</span> Kehadiran / Presensi
                 </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 8px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px; margin-bottom: 20px;">
                     <div style="background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e2e9; text-align: center;">
                         <p style="font-size: 11px; color: #737782;">Total</p>
                         <p style="font-size: 16px; font-weight: bold; color: #191c20; margin-top: 2px;">{{ $totalAttendance }}</p>

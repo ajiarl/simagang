@@ -14,14 +14,14 @@
         </p>
 
         @if(session('success'))
-            <div style="margin-bottom: 24px; padding: 12px; background: #dcfce7; border-radius: 8px; color: #166534; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px;; flex-wrap: wrap;">
+            <div style="margin-bottom: 24px; padding: 12px; background: #dcfce7; border-radius: 8px; color: #166534; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
                 <span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
                 {{ session('success') }}
             </div>
         @endif
 
         @if(session('error'))
-            <div style="margin-bottom: 24px; padding: 12px; background: #fee2e2; border-radius: 8px; color: #991b1b; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px;; flex-wrap: wrap;">
+            <div style="margin-bottom: 24px; padding: 12px; background: #fee2e2; border-radius: 8px; color: #991b1b; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
                 <span class="material-symbols-outlined" style="font-size: 20px;">error</span>
                 {{ session('error') }}
             </div>

@@ -17,11 +17,11 @@
 </div>
 
 {{-- Stats Grid --}}
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
     {{-- Mahasiswa Bimbingan --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #d6e3ff; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #003e7e; font-size: 20px;">groups</span>
                 </div>
@@ -37,7 +37,7 @@
     {{-- Logbook Pending --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #fef08a; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #854d0e; font-size: 20px;">pending_actions</span>
                 </div>
@@ -58,7 +58,7 @@
     {{-- Reviews Selesai --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #dcfce7; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #166534; font-size: 20px;">fact_check</span>
                 </div>
@@ -76,7 +76,7 @@
     {{-- Belum Dinilai --}}
     <div class="card">
         <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                 <div style="width: 40px; height: 40px; border-radius: 8px; background: #ffdcc6; display: flex; align-items: center; justify-content: center;">
                     <span class="material-symbols-outlined" style="color: #673000; font-size: 20px;">grade</span>
                 </div>
@@ -95,7 +95,7 @@
 </div>
 
 {{-- Two Column Layout --}}
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
     {{-- Pending Reviews --}}
     <div class="card">
         <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3; display: flex; align-items: center; justify-content: space-between;">
@@ -118,7 +118,7 @@
             @else
                 @foreach($recentLogbooks as $log)
                 <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; {{ !$loop->last ? 'border-bottom: 1px solid #e2e2e9;' : '' }}">
-                    <div style="display: flex; align-items: center; gap: 12px;; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                         <div class="avatar" style="width: 36px; height: 36px; font-size: 12px;">{{ $log->user->initials }}</div>
                         <div>
                             <p class="text-body-sm" style="color: #191c20; font-weight: 500;">{{ $log->user->name }}</p>

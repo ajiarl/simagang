@@ -43,7 +43,7 @@
 </div>
 
 {{-- Export Cards Grid --}}
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
     {{-- Kehadiran Card --}}
     <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
         <div class="card-body" style="flex-grow: 1;">

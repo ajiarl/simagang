@@ -216,9 +216,7 @@
                         readonly
                     >
                     <x-form-error name="email" />
-                    <x-form-error name="email" />
                 </div>
-                    <x-form-error name="password" />
 
                 {{-- New Password --}}
                 <div class="form-group">
@@ -236,7 +234,6 @@
                             <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon1">visibility_off</span>
                         </button>
                     </div>
-                    <x-form-error name="password_confirmation" />
                     <x-form-error name="password" />
                 </div>
 
@@ -267,6 +264,12 @@
         <p class="login-footer">&copy; {{ date('Y') }} Sistem Informasi Magang — Universitas</p>
     </div>
 
+    <style>
+        /* CSS Spinner */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spin { animation: spin 1s linear infinite; }
+        .btn-loading { opacity: 0.8; cursor: not-allowed; pointer-events: none; }
+    </style>
     <script>
         function togglePassword(inputId, iconId) {
             const input = document.getElementById(inputId);
@@ -279,8 +282,7 @@
                 icon.textContent = 'visibility_off';
             }
         }
-    </script>
-    <script>
+
         // Global double submission protection
         document.addEventListener('submit', function(e) {
             if (e.target.tagName === 'FORM') {

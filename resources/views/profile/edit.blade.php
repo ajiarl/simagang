@@ -4,7 +4,7 @@
 @section('page-title', 'Profil Saya')
 
 @section('content')
-<div style="display: grid; grid-template-columns: 3fr 2fr; gap: 24px; align-items: start;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start;">
 
     {{-- LEFT: Informasi Profil --}}
     <div class="card">
@@ -12,10 +12,9 @@
             <h3 class="text-headline-sm" style="color: #191c20;">Informasi Profil</h3>
             <p class="text-body-sm" style="color: #737782; margin-top: 4px;">Perbarui nama, email, dan informasi kontak Anda.</p>
         </div>
-                            <x-form-error name="password_confirmation" />
         <div class="card-body">
             {{-- Avatar + Identity --}}
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #e2e2e9;; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #e2e2e9; flex-wrap: wrap;">
                 <div style="width: 64px; height: 64px; border-radius: 9999px; background: #003e7e; color: #ffffff; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid #c2c6d3;">
                     {{ $user->initials }}
                 </div>
@@ -165,6 +164,7 @@
                                     <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
                                 </button>
                             </div>
+                            <x-form-error name="password_confirmation" />
                         </div>
 
                         <div>
@@ -203,7 +203,7 @@
                     </div>
                     @if($user->faculty)
                     <div style="border-top: 1px solid #e2e2e9;"></div>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;; flex-wrap: wrap;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap;">
                         <span class="text-label-sm" style="color: #737782; flex-shrink: 0;">Fakultas / Prodi</span>
                         <span class="text-body-sm" style="color: #191c20; font-weight: 500; text-align: right;">
                             {{ $user->department ?? $user->faculty }}

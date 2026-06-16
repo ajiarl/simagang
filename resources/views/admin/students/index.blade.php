@@ -13,7 +13,7 @@
 {{-- Page Header --}}
 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
     <h2 class="text-display-lg" style="color: #191c20;">Manajemen Mahasiswa</h2>
-    <form action="{{ route('admin.students.index') }}" method="GET" style="display: flex; gap: 8px; align-items: center;; flex-wrap: wrap;">
+    <form action="{{ route('admin.students.index') }}" method="GET" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
         <input type="hidden" name="search" value="{{ request('search') }}">
         <select name="status" class="form-input" style="width: auto; padding: 8px 12px; font-size: 14px; border-radius: 8px;" onchange="this.form.submit()">
             <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
@@ -26,7 +26,7 @@
 {{-- Search Card --}}
 <div class="card" style="margin-bottom: 16px;">
     <div style="padding: 16px 20px;">
-        <form method="GET" action="{{ route('admin.students.index') }}" style="display: flex; gap: 8px;; flex-wrap: wrap;">
+        <form method="GET" action="{{ route('admin.students.index') }}" style="display: flex; gap: 8px; flex-wrap: wrap;">
             <input type="hidden" name="status" value="{{ request('status') }}">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berdasarkan nama, NIM, atau email..." class="form-input" style="flex: 1;">
             <button type="submit" class="btn-primary">
@@ -76,7 +76,7 @@
                             @endif
                         </td>
                         <td class="col-aksi" style="padding: 16px 20px;">
-                            <div style="display: flex; gap: 8px; justify-content: center;; flex-wrap: wrap;">
+                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
                                 <a href="{{ route('admin.students.show', $student) }}" class="btn-secondary" style="padding: 10px 14px; font-size: 13px; text-decoration: none;">
                                     Detail
                                 </a>
