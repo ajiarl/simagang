@@ -13,14 +13,19 @@
 {{-- Page Header --}}
 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
     <h2 class="text-display-lg" style="color: #191c20;">Manajemen Mahasiswa</h2>
-    <form action="{{ route('admin.students.index') }}" method="GET" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-        <input type="hidden" name="search" value="{{ request('search') }}">
-        <select name="status" class="form-input" style="width: auto; padding: 8px 12px; font-size: 14px; border-radius: 8px;" onchange="this.form.submit()">
-            <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
-            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif Magang</option>
-            <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Belum Magang</option>
-        </select>
-    </form>
+    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <form action="{{ route('admin.students.index') }}" method="GET" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <input type="hidden" name="search" value="{{ request('search') }}">
+            <select name="status" class="form-input" style="width: auto; padding: 8px 12px; font-size: 14px; border-radius: 8px;" onchange="this.form.submit()">
+                <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
+                <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif Magang</option>
+                <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Belum Magang</option>
+            </select>
+        </form>
+        <a href="{{ route('admin.students.create') }}" class="btn-primary" style="text-decoration: none; padding: 8px 16px;">
+            <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 4px;">add</span> Tambah
+        </a>
+    </div>
 </div>
 
 {{-- Search Card --}}

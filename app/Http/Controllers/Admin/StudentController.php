@@ -42,6 +42,48 @@ class StudentController extends Controller
     }
 
     /**
+     * Show the form for creating a new student.
+     */
+    public function create()
+    {
+        return view('admin.students.create');
+    }
+
+    /**
+     * Store a newly created student in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'nim'      => 'nullable|string|max:50',
+            'email'    => 'required|email|unique:users,email',
+            'phone'    => 'nullable|string|max:50',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required'      => 'Nama lengkap wajib diisi.',
+            'email.required'     => 'Email wajib diisi.',
+            'email.email'        => 'Format email tidak valid.',
+            'email.unique'       => 'Email ini sudah digunakan oleh akun lain.',
+            'password.required'  => 'Password wajib diisi.',
+            'password.min'       => 'Password minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        ]);
+
+        $student = User::create([
+            'name'     => $request->name,
+            'nim'      => $request->nim,
+            'email'    => $request->email,
+            'phone'    => $request->phone,
+            'password' => \Hash::make($request->password),
+        ]);
+
+        $student->assignRole('mahasiswa');
+
+        return redirect()->route('admin.students.index')->with('success', 'Data mahasiswa berhasil ditambahkan.');
+    }
+
+    /**
      * Display the specified student.
      */
     public function show(User $student)

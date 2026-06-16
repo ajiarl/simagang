@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 // All routes here are already prefixed with 'admin.' and have 'role:admin' middleware
 
 // Manajemen Mahasiswa
-Route::resource('students', StudentController::class)->except(['create', 'store', 'destroy']);
+Route::resource('students', StudentController::class)->except(['destroy']);
 
 // Manajemen Perusahaan
 Route::resource('companies', CompanyController::class);
