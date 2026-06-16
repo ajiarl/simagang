@@ -180,6 +180,13 @@
             background: #f3f3fa;
         }
     </style>
+
+    <style>
+        /* CSS Spinner for loading buttons */
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spin { animation: spin 1s linear infinite; }
+        .btn-loading { opacity: 0.8; cursor: not-allowed; pointer-events: none; }
+    </style>
 </head>
 <body class="bg-background text-on-surface font-sans antialiased">
 
@@ -406,6 +413,23 @@
             }
         });
     </script>
+    <script>
+        // Global double submission protection
+        document.addEventListener('submit', function(e) {
+            if (e.target.tagName === 'FORM') {
+                const btn = e.target.querySelector('button[type="submit"]');
+                if (btn) {
+                    setTimeout(() => {
+                        btn.disabled = true;
+                        btn.classList.add('btn-loading');
+                        const originalContent = btn.innerHTML;
+                        btn.dataset.originalContent = originalContent;
+                        btn.innerHTML = '<span class="material-symbols-outlined spin" style="font-size: 18px; margin-right: 4px; vertical-align: middle;">sync</span><span style="vertical-align: middle;">Loading...</span>';
+                    }, 10);
+                }
+            }
+        });
+    </script>
 
     <style>
         @media (max-width: 1023px) {
@@ -475,6 +499,23 @@
             }
         });
     }
+    </script>
+    <script>
+        // Global double submission protection
+        document.addEventListener('submit', function(e) {
+            if (e.target.tagName === 'FORM') {
+                const btn = e.target.querySelector('button[type="submit"]');
+                if (btn) {
+                    setTimeout(() => {
+                        btn.disabled = true;
+                        btn.classList.add('btn-loading');
+                        const originalContent = btn.innerHTML;
+                        btn.dataset.originalContent = originalContent;
+                        btn.innerHTML = '<span class="material-symbols-outlined spin" style="font-size: 18px; margin-right: 4px; vertical-align: middle;">sync</span><span style="vertical-align: middle;">Loading...</span>';
+                    }, 10);
+                }
+            }
+        });
     </script>
 </body>
 </html>

@@ -255,5 +255,22 @@
             }
         }
     </script>
+    <script>
+        // Global double submission protection
+        document.addEventListener('submit', function(e) {
+            if (e.target.tagName === 'FORM') {
+                const btn = e.target.querySelector('button[type="submit"]');
+                if (btn) {
+                    setTimeout(() => {
+                        btn.disabled = true;
+                        btn.classList.add('btn-loading');
+                        const originalContent = btn.innerHTML;
+                        btn.dataset.originalContent = originalContent;
+                        btn.innerHTML = '<span class="material-symbols-outlined spin" style="font-size: 18px; margin-right: 4px; vertical-align: middle;">sync</span><span style="vertical-align: middle;">Loading...</span>';
+                    }, 10);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
