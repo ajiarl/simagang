@@ -83,6 +83,7 @@
                             <div style="margin-bottom: 16px;">
                                 <label for="note_{{ $logbook->id }}" style="display: block; font-size: 13px; color: #424751; margin-bottom: 8px;">Catatan (Opsional jika Setuju, Wajib jika Revisi)</label>
                                 <textarea name="supervisor_note" id="note_{{ $logbook->id }}" rows="2" style="width: 100%; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" placeholder="Tuliskan catatan revisi atau evaluasi Anda di sini..."></textarea>
+                                <x-form-error name="supervisor_note" />
                             </div>
                             
                             <div style="display: flex; gap: 12px;">

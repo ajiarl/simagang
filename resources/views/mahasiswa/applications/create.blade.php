@@ -34,6 +34,7 @@
                         </option>
                     @endforeach
                 </select>
+                <x-form-error name="internship_period_id" />
             </div>
 
             {{-- Perusahaan Mitra --}}
@@ -47,12 +48,14 @@
                         </option>
                     @endforeach
                 </select>
+                <x-form-error name="company_id" />
             </div>
 
             {{-- Motivasi / Tujuan --}}
             <div style="margin-bottom: 24px;">
                 <label for="motivation" style="display: block; font-weight: 500; margin-bottom: 8px; color: #191c20;">Motivasi / Tujuan Magang *</label>
                 <textarea name="motivation" id="motivation" rows="4" style="width: 100%; padding: 10px 12px; border: 1px solid #c2c6d3; border-radius: 8px; font-size: 14px; color: #191c20; resize: vertical;" required placeholder="Jelaskan alasan Anda memilih perusahaan ini dan apa yang ingin Anda capai...">{{ old('motivation') }}</textarea>
+                <x-form-error name="motivation" />
             </div>
 
             <div style="margin-bottom: 24px; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
@@ -64,6 +67,7 @@
                 <div style="margin-bottom: 16px;">
                     <label for="ktm_file" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #191c20;">Kartu Tanda Mahasiswa (KTM) *</label>
                     <input type="file" name="ktm_file" id="ktm_file" accept=".pdf,.jpg,.jpeg,.png" style="width: 100%; font-size: 14px; color: #424751;" required>
+                    <x-form-error name="ktm_file" />
                     <p style="font-size: 12px; color: #737782; margin-top: 4px;">Format: PDF/JPG/PNG. Maksimal 2MB.</p>
                 </div>
 
@@ -71,6 +75,7 @@
                 <div>
                     <label for="surat_permohonan" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: #191c20;">Surat Permohonan dari Fakultas *</label>
                     <input type="file" name="surat_permohonan" id="surat_permohonan" accept=".pdf" style="width: 100%; font-size: 14px; color: #424751;" required>
+                    <x-form-error name="surat_permohonan" />
                     <p style="font-size: 12px; color: #737782; margin-top: 4px;">Format: PDF. Maksimal 5MB.</p>
                 </div>
             </div>

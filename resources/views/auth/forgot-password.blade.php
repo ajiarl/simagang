@@ -209,6 +209,7 @@
                         autofocus
                     >
                     <x-form-error name="email" />
+                    <x-form-error name="email" />
                 </div>
 
                 <button type="submit" class="login-btn">Kirim Link Reset</button>

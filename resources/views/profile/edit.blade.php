@@ -12,6 +12,7 @@
             <h3 class="text-headline-sm" style="color: #191c20;">Informasi Profil</h3>
             <p class="text-body-sm" style="color: #737782; margin-top: 4px;">Perbarui nama, email, dan informasi kontak Anda.</p>
         </div>
+                            <x-form-error name="password_confirmation" />
         <div class="card-body">
             {{-- Avatar + Identity --}}
             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #e2e2e9;">

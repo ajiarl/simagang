@@ -216,7 +216,9 @@
                         readonly
                     >
                     <x-form-error name="email" />
+                    <x-form-error name="email" />
                 </div>
+                    <x-form-error name="password" />
 
                 {{-- New Password --}}
                 <div class="form-group">
@@ -234,6 +236,7 @@
                             <span class="material-symbols-outlined" style="font-size: 20px;" id="eyeIcon1">visibility_off</span>
                         </button>
                     </div>
+                    <x-form-error name="password_confirmation" />
                     <x-form-error name="password" />
                 </div>
 

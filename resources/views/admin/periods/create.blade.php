@@ -23,6 +23,7 @@
                 <label for="name" class="text-label-md text-gray-700">Nama Periode *</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Contoh: Genap 2026/2027" required class="form-input w-full p-3">
                 <x-form-error name="name" />
+                <x-form-error name="name" />
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -30,11 +31,13 @@
                     <label for="registration_start" class="text-label-md text-gray-700">Tanggal Buka Pendaftaran *</label>
                     <input type="date" id="registration_start" name="registration_start" value="{{ old('registration_start') }}" required class="form-input w-full p-3">
                     <x-form-error name="registration_start" />
+                    <x-form-error name="registration_start" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="registration_end" class="text-label-md text-gray-700">Tanggal Tutup Pendaftaran *</label>
                     <input type="date" id="registration_end" name="registration_end" value="{{ old('registration_end') }}" required class="form-input w-full p-3">
+                    <x-form-error name="registration_end" />
                     <x-form-error name="registration_end" />
                 </div>
             </div>
@@ -44,13 +47,16 @@
                     <label for="start_date" class="text-label-md text-gray-700">Tanggal Mulai Magang *</label>
                     <input type="date" id="start_date" name="start_date" value="{{ old('start_date') }}" required class="form-input w-full p-3">
                     <x-form-error name="start_date" />
+                    <x-form-error name="start_date" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="end_date" class="text-label-md text-gray-700">Tanggal Selesai Magang *</label>
                     <input type="date" id="end_date" name="end_date" value="{{ old('end_date') }}" required class="form-input w-full p-3">
                     <x-form-error name="end_date" />
+                    <x-form-error name="end_date" />
                 </div>
+            <x-form-error name="is_active" />
             </div>
 
             <div class="mt-2 flex items-center gap-3">

@@ -144,6 +144,7 @@
                         <div style="margin-bottom: 12px;">
                             <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: #424751;">Alasan Penolakan</label>
                             <textarea name="rejection_reason" rows="2" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px; resize: vertical;" required placeholder="Alasan penolakan..."></textarea>
+                            <x-form-error name="rejection_reason" />
                         </div>
                         <button type="submit" class="btn-secondary" style="width: 100%; color: #991b1b; border-color: #991b1b; background: #fef2f2;">
                             <span class="material-symbols-outlined" style="font-size: 18px;">cancel</span> Tolak

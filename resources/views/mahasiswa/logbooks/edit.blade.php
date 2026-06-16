@@ -42,18 +42,21 @@
             <div style="margin-bottom: 20px;">
                 <label for="date" style="display: block; font-weight: 500; margin-bottom: 8px; color: #191c20;">Tanggal Kegiatan *</label>
                 <input type="date" name="date" id="date" max="{{ date('Y-m-d') }}" value="{{ old('date', $logbook->date->format('Y-m-d')) }}" style="width: 100%; padding: 10px 12px; border: 1px solid #c2c6d3; border-radius: 8px; font-size: 14px; color: #191c20;" required>
+                <x-form-error name="date" />
             </div>
 
             {{-- Kegiatan --}}
             <div style="margin-bottom: 20px;">
                 <label for="activity" style="display: block; font-weight: 500; margin-bottom: 8px; color: #191c20;">Kegiatan yang dilakukan *</label>
                 <textarea name="activity" id="activity" rows="4" style="width: 100%; padding: 10px 12px; border: 1px solid #c2c6d3; border-radius: 8px; font-size: 14px; color: #191c20; resize: vertical;" required>{{ old('activity', $logbook->activity) }}</textarea>
+                <x-form-error name="activity" />
             </div>
 
             {{-- Pembelajaran --}}
             <div style="margin-bottom: 24px;">
                 <label for="learning" style="display: block; font-weight: 500; margin-bottom: 8px; color: #191c20;">Pembelajaran / Insight (Opsional)</label>
                 <textarea name="learning" id="learning" rows="3" style="width: 100%; padding: 10px 12px; border: 1px solid #c2c6d3; border-radius: 8px; font-size: 14px; color: #191c20; resize: vertical;">{{ old('learning', $logbook->learning) }}</textarea>
+                <x-form-error name="learning" />
             </div>
 
             <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid #c2c6d3; padding-top: 20px;">

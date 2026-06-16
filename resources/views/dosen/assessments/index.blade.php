@@ -8,17 +8,20 @@
     <div style="padding: 16px 20px; border-bottom: 1px solid #c2c6d3;">
         <h3 class="text-headline-sm" style="color: #191c20;">Daftar Mahasiswa</h3>
     </div>
+                        <x-form-error name="discipline" />
 
     @if(session('success'))
         <div style="margin: 16px 20px; padding: 12px 16px; background: #dcfce7; border-radius: 8px; color: #166534; font-size: 14px;">
             {{ session('success') }}
         </div>
+                        <x-form-error name="attitude" />
     @endif
 
     @if(session('error'))
         <div style="margin: 16px 20px; padding: 12px 16px; background: #fee2e2; border-radius: 8px; color: #991b1b; font-size: 14px;">
             {{ session('error') }}
         </div>
+                        <x-form-error name="skills" />
     @endif
 
     @if($errors->any())
@@ -29,6 +32,7 @@
                 @endforeach
             </ul>
         </div>
+                        <x-form-error name="communication" />
     @endif
 
     <div style="overflow-x: auto;">
@@ -36,6 +40,7 @@
             <div style="padding: 40px 20px; text-align: center;">
                 <p class="text-body-md" style="color: #737782;">Belum ada mahasiswa bimbingan yang disetujui.</p>
             </div>
+                        <x-form-error name="initiative" />
         @else
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
@@ -135,6 +140,7 @@
                         <div>
                             <label for="notes_{{ $application->id }}" class="text-label-md" style="display: block; margin-bottom: 8px;">Catatan (Opsional)</label>
                             <textarea name="notes" id="notes_{{ $application->id }}" rows="3" style="width: 100%; padding: 8px 12px; border: 1px solid #c2c6d3; border-radius: 6px;">{{ old('notes') }}</textarea>
+                            <x-form-error name="notes" />
                         </div>
                     </div>
                     
