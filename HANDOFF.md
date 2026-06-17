@@ -186,9 +186,8 @@ File referensi: `docs/DESIGN.md`
 | File | Isi |
 |---|---|
 | `docs/DESIGN.md` | Design system dari Stitch |
-| `docs/PRD_SiMagang_v1.md` | Product requirements |
-| `docs/IMPLEMENTATION_PLAN.md` | Rencana implementasi per fase + prompt Antigravity |
-| `docs/POLISH_PLAN.md` | Gap analysis — semua selesai |
+| `docs/HANDOFF.md` | Panduan handoff: controller, route, DB, keputusan teknis |
+| `docs/POLISH_PLAN.md` | Gap analysis & status penyelesaian |
 | `docs/PHASE0_BLUEPRINT.md` | Blueprint arsitektur & schema (jika ada) |
 | `README.md` | Cara install & jalankan (di root project) |
 
