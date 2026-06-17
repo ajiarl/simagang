@@ -118,9 +118,3 @@ Dokumentasi lengkap tersedia di folder [`docs/`](./docs/):
 | [`docs/POLISH_PLAN.md`](./docs/POLISH_PLAN.md) | Gap analysis & status penyelesaian |
 | [`docs/PRD_SiMagang_v1.md`](./docs/PRD_SiMagang_v1.md) | Product Requirements Document |
 | [`docs/DESIGN.md`](./docs/DESIGN.md) | Design system (warna, tipografi, komponen) |
-
----
-
-## 📜 License
-
-Project ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
