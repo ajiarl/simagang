@@ -115,7 +115,6 @@ Dokumentasi lengkap tersedia di folder [`docs/`](./docs/):
 | File | Isi |
 |---|---|
 | [`docs/HANDOFF.md`](./docs/HANDOFF.md) | Panduan handoff: controller, route, DB, keputusan teknis |
-| [`docs/IMPLEMENTATION_PLAN.md`](./docs/IMPLEMENTATION_PLAN.md) | Rencana implementasi per fase + prompt Antigravity |
 | [`docs/POLISH_PLAN.md`](./docs/POLISH_PLAN.md) | Gap analysis & status penyelesaian |
 | [`docs/PRD_SiMagang_v1.md`](./docs/PRD_SiMagang_v1.md) | Product Requirements Document |
 | [`docs/DESIGN.md`](./docs/DESIGN.md) | Design system (warna, tipografi, komponen) |
