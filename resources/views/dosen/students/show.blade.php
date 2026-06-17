@@ -202,32 +202,24 @@
                 <h3 class="text-headline-sm" style="color: #191c20; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span class="material-symbols-outlined" style="color: #003e7e;">event_available</span> Kehadiran / Presensi
                 </h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 20px;">
                     <div style="background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e2e9; text-align: center;">
-                        <p style="font-size: 11px; color: #737782;">Total</p>
+                        <p style="font-size: 11px; color: #737782;">Total QR</p>
                         <p style="font-size: 16px; font-weight: bold; color: #191c20; margin-top: 2px;">{{ $totalAttendance }}</p>
                     </div>
                     <div style="background: #ecfdf5; padding: 10px; border-radius: 6px; border: 1px solid #a7f3d0; text-align: center;">
-                        <p style="font-size: 11px; color: #047857;">Hadir</p>
-                        <p style="font-size: 16px; font-weight: bold; color: #047857; margin-top: 2px;">{{ $presentCount }}</p>
-                    </div>
-                    <div style="background: #eff6ff; padding: 10px; border-radius: 6px; border: 1px solid #bfdbfe; text-align: center;">
-                        <p style="font-size: 11px; color: #1d4ed8;">Izin</p>
-                        <p style="font-size: 16px; font-weight: bold; color: #1d4ed8; margin-top: 2px;">{{ $permitCount }}</p>
+                        <p style="font-size: 11px; color: #047857;">Hadir (Terverifikasi)</p>
+                        <p style="font-size: 16px; font-weight: bold; color: #047857; margin-top: 2px;">{{ $verifiedCount }}</p>
                     </div>
                     <div style="background: #fef9c3; padding: 10px; border-radius: 6px; border: 1px solid #fef08a; text-align: center;">
-                        <p style="font-size: 11px; color: #a16207;">Sakit</p>
-                        <p style="font-size: 16px; font-weight: bold; color: #a16207; margin-top: 2px;">{{ $sickCount }}</p>
-                    </div>
-                    <div style="background: #fef2f2; padding: 10px; border-radius: 6px; border: 1px solid #fecaca; text-align: center;">
-                        <p style="font-size: 11px; color: #b91c1c;">Absen</p>
-                        <p style="font-size: 16px; font-weight: bold; color: #b91c1c; margin-top: 2px;">{{ $alphaCount }}</p>
+                        <p style="font-size: 11px; color: #a16207;">Belum Diverifikasi</p>
+                        <p style="font-size: 16px; font-weight: bold; color: #a16207; margin-top: 2px;">{{ $pendingCount }}</p>
                     </div>
                 </div>
 
                 {{-- Attendance Rate --}}
                 @php
-                    $attendancePercent = $totalAttendance > 0 ? round((($presentCount + $sickCount + $permitCount) / $totalAttendance) * 100) : 0;
+                    $attendancePercent = $totalAttendance > 0 ? round(($verifiedCount / $totalAttendance) * 100) : 0;
                 @endphp
                 <div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">

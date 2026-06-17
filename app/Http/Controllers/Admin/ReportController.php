@@ -36,11 +36,11 @@ class ReportController extends Controller
     {
         $application = null;
         if ($applicationId) {
-            $application = InternshipApplication::whereIn('status', ['approved', 'completed'])
+            $application = InternshipApplication::active()
                 ->find($applicationId);
         } elseif ($request->has('user_id')) {
             $application = InternshipApplication::where('user_id', $request->user_id)
-                ->whereIn('status', ['approved', 'completed'])
+                ->active()
                 ->latest()
                 ->first();
         }
@@ -52,24 +52,19 @@ class ReportController extends Controller
         // Load relationships
         $application->load(['user', 'company', 'dosen', 'assessments', 'logbooks']);
 
-        // Stats
+        // Stats — "hadir" = verified_at is set (QR scanned by company)
         $totalPresent = Attendance::where('internship_application_id', $application->id)
-            ->where('status', 'present')
+            ->whereNotNull('verified_at')
             ->count();
-            
+
         $totalAbsent = Attendance::where('internship_application_id', $application->id)
-            ->where('status', 'absent')
+            ->whereNull('verified_at')
             ->count();
 
         $dosenAssessment = $application->assessments->where('assessor_type', 'dosen')->first();
         $perusahaanAssessment = $application->assessments->where('assessor_type', 'perusahaan')->first();
 
-        $dosenScore = $dosenAssessment?->final_score;
-        $perusahaanScore = $perusahaanAssessment?->final_score;
-
-        $finalScore = ($dosenScore && $perusahaanScore)
-            ? round(($dosenScore + $perusahaanScore) / 2, 2)
-            : null;
+        $finalScore = $application->combined_score;
 
         $pdf = Pdf::loadView('admin.reports.pdf', compact(
             'application',

@@ -15,7 +15,7 @@ class DocumentController extends Controller
         $application = auth()->user()
             ->internshipApplications()
             ->with(['documents', 'internshipPeriod', 'company'])
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->latest()
             ->first();
 
@@ -36,15 +36,6 @@ class DocumentController extends Controller
         );
     }
 
-    /**
-     * Sanitize a filename to prevent path traversal and header injection.
-     */
-    private function sanitizeFilename(string $filename): string
-    {
-        $filename = basename(str_replace(['\\', '\0'], '', $filename));
-        $filename = preg_replace('/[^\w.\-]/', '_', $filename);
-        return preg_replace('/_{2,}/', '_', $filename) ?: 'document';
-    }
 
     public function downloadSurat(InternshipApplication $application)
     {
@@ -67,13 +58,7 @@ class DocumentController extends Controller
             'assessments', 'logbooks', 'attendances'
         ]);
 
-        $nilaiDosen      = $application->assessments
-                            ->where('assessor_type', 'dosen')->first()?->final_score;
-        $nilaiPerusahaan = $application->assessments
-                            ->where('assessor_type', 'perusahaan')->first()?->final_score;
-        $nilaiAkhir      = ($nilaiDosen && $nilaiPerusahaan)
-                            ? round(($nilaiDosen + $nilaiPerusahaan) / 2, 2)
-                            : null;
+        $nilaiAkhir      = $application->combined_score;
 
         $pdf = Pdf::loadView('pdf.sertifikat', compact(
             'application', 'nilaiDosen', 'nilaiPerusahaan', 'nilaiAkhir'

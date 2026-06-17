@@ -5,21 +5,20 @@ namespace App\Http\Controllers\Dosen;
 use App\Http\Controllers\Controller;
 use App\Models\Assessment;
 use App\Models\InternshipApplication;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class AssessmentController extends Controller
 {
-    use AuthorizesRequests;
-
     public function index()
     {
         $dosenId = auth()->id();
 
         // Get approved/completed applications supervised by this dosen
-        $applications = InternshipApplication::with(['user', 'company', 'assessments'])
-            ->where('dosen_id', $dosenId)
-            ->whereIn('status', ['approved', 'completed'])
+        $applications = InternshipApplication::with(['user', 'company', 'assessments' => function ($q) {
+            $q->where('assessor_type', 'dosen');
+        }])
+            ->where('dosen_id', auth()->id())
+            ->active()
             ->get();
 
         return view('dosen.assessments.index', compact('applications'));

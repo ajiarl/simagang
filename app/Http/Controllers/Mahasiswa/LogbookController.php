@@ -14,8 +14,8 @@ class LogbookController extends Controller
      */
     public function index()
     {
-        $application = auth()->user()->internshipApplications()
-            ->whereIn('status', ['approved', 'completed'])
+        $application = InternshipApplication::where('user_id', auth()->id())
+            ->active()
             ->latest()
             ->first();
 

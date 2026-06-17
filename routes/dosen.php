@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 // Middleware: role:dosen
 
 Route::get('/logbooks', [LogbookController::class, 'index'])->name('logbooks.index');
-Route::get('/logbooks/{student_id}', [LogbookController::class, 'showStudent'])->name('logbooks.student');
+Route::get('/logbooks/{application}', [LogbookController::class, 'showStudent'])->name('logbooks.student');
 Route::post('/logbooks/{logbook}/review', [LogbookController::class, 'review'])->name('logbooks.review');
 
 Route::get('/penilaian', [AssessmentController::class, 'index'])->name('assessments.index');

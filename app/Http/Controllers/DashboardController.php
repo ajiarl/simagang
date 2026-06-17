@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $user        = auth()->user();
         $application = $user->internshipApplications()
             ->with(['company', 'internshipPeriod'])
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->latest()
             ->first();
 
@@ -71,17 +71,10 @@ class DashboardController extends Controller
                 : 0;
 
             // Nilai
-            $assessments = $application->assessments;
-            $dosenScore  = $assessments->where('assessor_type', 'dosen')
-                ->first()?->final_score;
-            $compScore   = $assessments->where('assessor_type', 'perusahaan')
-                ->first()?->final_score;
-
-            $stats['nilai_dosen']     = $dosenScore;
-            $stats['nilai_perusahaan']= $compScore;
-            $stats['nilai_akhir']     = ($dosenScore && $compScore)
-                ? round(($dosenScore + $compScore) / 2, 2)
-                : null;
+            $assessments               = $application->assessments;
+            $stats['nilai_dosen']      = $assessments->where('assessor_type', 'dosen')->first()?->final_score;
+            $stats['nilai_perusahaan'] = $assessments->where('assessor_type', 'perusahaan')->first()?->final_score;
+            $stats['nilai_akhir']      = $application->combined_score;
         }
 
         return view('mahasiswa.dashboard', compact('stats', 'application'));
@@ -106,7 +99,7 @@ class DashboardController extends Controller
 
             // Perusahaan & Periode
             'total_perusahaan'       => Company::where('is_active', true)->count(),
-            'periode_aktif'          => InternshipPeriod::where('is_active', true)->first(),
+            'periode_aktif'          => InternshipPeriod::active()->first(),
 
             // Presensi hari ini
             'presensi_hari_ini'      => Attendance::whereDate('date', today())

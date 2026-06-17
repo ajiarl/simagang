@@ -15,12 +15,9 @@ class LogbookController extends Controller
     public function index()
     {
         // Get applications where this dosen is assigned — include completed for history
-        $applications = InternshipApplication::with(['user', 'company', 'logbooks' => function ($query) {
-                // Count pending logbooks
-                $query->where('status', 'submitted');
-            }])
+        $applications = InternshipApplication::with(['user', 'company', 'logbooks'])
             ->where('dosen_id', auth()->id())
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->get();
 
         return view('dosen.logbooks.index', compact('applications'));
@@ -29,14 +26,15 @@ class LogbookController extends Controller
     /**
      * Show logbooks for a specific student's application
      */
-    public function showStudent($application_id)
+    public function showStudent(InternshipApplication $application)
     {
-        $application = InternshipApplication::with(['user', 'company', 'logbooks' => function ($query) {
-                $query->orderBy('date', 'desc');
-            }])
-            ->where('id', $application_id)
-            ->where('dosen_id', auth()->id())
-            ->firstOrFail();
+        if ($application->dosen_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $application->load(['user', 'company', 'logbooks' => function ($query) {
+            $query->orderBy('date', 'desc');
+        }]);
 
         return view('dosen.logbooks.show_student', compact('application'));
     }

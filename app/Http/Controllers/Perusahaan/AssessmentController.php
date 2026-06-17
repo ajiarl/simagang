@@ -5,21 +5,20 @@ namespace App\Http\Controllers\Perusahaan;
 use App\Http\Controllers\Controller;
 use App\Models\Assessment;
 use App\Models\InternshipApplication;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class AssessmentController extends Controller
 {
-    use AuthorizesRequests;
-
     public function index()
     {
         $companyId = auth()->user()->company_id;
 
         // Get approved/completed applications for this company
-        $applications = InternshipApplication::with(['user', 'assessments'])
+        $applications = InternshipApplication::with(['user', 'assessments' => function ($q) {
+            $q->where('assessor_type', 'perusahaan');
+        }])
             ->where('company_id', $companyId)
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->get();
 
         return view('perusahaan.assessments.index', compact('applications'));

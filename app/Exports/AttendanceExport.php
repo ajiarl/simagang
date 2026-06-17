@@ -22,10 +22,8 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping
             'Nama Mahasiswa',
             'NIM',
             'Perusahaan',
-            'Total Hadir',
-            'Total Izin',
-            'Total Sakit',
-            'Total Alpa (Tanpa Keterangan)',
+            'Hadir (Terverifikasi)',
+            'Belum Diverifikasi',
         ];
     }
 
@@ -37,10 +35,8 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping
             $application->user->name,
             $application->user->nim,
             $application->company->name,
-            $attendances->where('status', 'present')->count(),
-            $attendances->where('status', 'permit')->count(),
-            $attendances->where('status', 'sick')->count(),
-            $attendances->where('status', 'absent')->count(),
+            $attendances->whereNotNull('verified_at')->count(),
+            $attendances->whereNull('verified_at')->count(),
         ];
     }
 }

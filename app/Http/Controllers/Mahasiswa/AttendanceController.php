@@ -16,7 +16,7 @@ class AttendanceController extends Controller
 
         // Get the active approved application (also allow completed for history view)
         $application = InternshipApplication::where('user_id', $user->id)
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->latest()
             ->first();
 
@@ -59,7 +59,7 @@ class AttendanceController extends Controller
             ],
             [
                 'qr_token' => Str::uuid()->toString(),
-                'status' => 'pending', // Will be updated to verified by Company
+                'status'   => 'pending', // 'pending' until company scans QR → set to 'verified' with verified_at
             ]
         );
 

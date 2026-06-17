@@ -15,7 +15,7 @@ class AssessmentController extends Controller
         // Get the active approved application with its assessments (also show for completed)
         $application = InternshipApplication::with('assessments')
             ->where('user_id', $user->id)
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->latest()
             ->first();
 
@@ -31,12 +31,7 @@ class AssessmentController extends Controller
         $dosenAssessment = $application->assessments->where('assessor_type', 'dosen')->first();
         $perusahaanAssessment = $application->assessments->where('assessor_type', 'perusahaan')->first();
 
-        $dosenScore = $dosenAssessment?->final_score;
-        $perusahaanScore = $perusahaanAssessment?->final_score;
-
-        $combinedScore = ($dosenScore && $perusahaanScore)
-            ? round(($dosenScore + $perusahaanScore) / 2, 2)
-            : null;
+        $combinedScore = $application->combined_score;
 
         return view('mahasiswa.assessments.index', [
             'hasApplication' => true,

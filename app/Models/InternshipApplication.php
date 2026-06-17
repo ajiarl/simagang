@@ -77,6 +77,14 @@ class InternshipApplication extends Model
 
     // ── Scopes ──
 
+    /**
+     * Scope: only approved or completed applications (have active/finished internship).
+     */
+    public function scopeActive($query)
+    {
+        return $query->whereIn('status', ['approved', 'completed']);
+    }
+
     public function scopeStatus($query, string $status)
     {
         return $query->where('status', $status);
@@ -94,5 +102,19 @@ class InternshipApplication extends Model
         return $this->isApproved()
             && $this->start_date?->lte(now())
             && $this->end_date?->gte(now());
+    }
+
+    /**
+     * Calculate the combined final score (average of dosen + perusahaan).
+     * Returns null if either assessment is missing.
+     */
+    public function getCombinedScoreAttribute(): ?float
+    {
+        $dosenScore      = $this->assessments->where('assessor_type', 'dosen')->first()?->final_score;
+        $perusahaanScore = $this->assessments->where('assessor_type', 'perusahaan')->first()?->final_score;
+
+        return ($dosenScore && $perusahaanScore)
+            ? round(($dosenScore + $perusahaanScore) / 2, 2)
+            : null;
     }
 }

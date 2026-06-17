@@ -23,7 +23,7 @@ class InternshipApplicationController extends Controller
 
     public function create()
     {
-        $activePeriods = InternshipPeriod::where('is_active', true)->get();
+        $activePeriods = InternshipPeriod::active()->get();
         $companies = Company::orderBy('name')->get();
 
         return view('mahasiswa.applications.create', compact('activePeriods', 'companies'));
@@ -149,7 +149,6 @@ class InternshipApplicationController extends Controller
 
         $pdf = Pdf::loadView('pdf.surat-pengantar', compact('application'));
         
-        // Return for download
         return $pdf->download('Surat_Pengantar_Magang_' . $application->user->nim . '.pdf');
     }
 
@@ -167,17 +166,4 @@ class InternshipApplicationController extends Controller
         return Storage::download($document->file_path, $this->sanitizeFilename($document->original_name));
     }
 
-    /**
-     * Sanitize a filename to prevent path traversal and header injection.
-     * Keeps only alphanumeric characters, dots, dashes, and underscores.
-     */
-    private function sanitizeFilename(string $filename): string
-    {
-        // Strip directory separators and null bytes
-        $filename = basename(str_replace(['\\', '\0'], '', $filename));
-        // Replace any character that is not alphanumeric, dot, dash, or underscore
-        $filename = preg_replace('/[^\w.\-]/', '_', $filename);
-        // Collapse multiple underscores/dots
-        return preg_replace('/_{2,}/', '_', $filename) ?: 'document';
-    }
 }

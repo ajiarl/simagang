@@ -12,7 +12,7 @@ class AssessmentExport implements FromCollection, WithHeadings, WithMapping
     public function collection()
     {
         return InternshipApplication::with(['user', 'company', 'dosen', 'assessments'])
-            ->whereIn('status', ['approved', 'completed'])
+            ->active()
             ->get();
     }
 
@@ -37,9 +37,7 @@ class AssessmentExport implements FromCollection, WithHeadings, WithMapping
         $dosenScore = $dosenAssessment?->final_score ?? 0;
         $perusahaanScore = $perusahaanAssessment?->final_score ?? 0;
 
-        $finalScore = ($dosenAssessment && $perusahaanAssessment)
-            ? round(($dosenScore + $perusahaanScore) / 2, 2)
-            : 'Belum Lengkap';
+        $finalScore = $application->combined_score ?? 'Belum Lengkap';
 
         return [
             $application->user->name,

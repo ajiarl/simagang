@@ -16,7 +16,7 @@ class AttendanceController extends Controller
         $attendances = Attendance::with('user', 'verifier')
             ->whereHas('internshipApplication', function ($q) use ($companyId) {
                 $q->where('company_id', $companyId)
-                  ->whereIn('status', ['approved', 'completed']);
+                  ->active();
             })
             ->orderBy('date', 'desc')
             ->get();
@@ -37,7 +37,6 @@ class AttendanceController extends Controller
 
         $companyId = auth()->user()->company_id;
 
-        // Find attendance logic as requested by user audit
         $attendance = Attendance::where('qr_token', $request->qr_token)
             ->whereDate('date', today()) // expiry check
             ->whereHas('internshipApplication', function ($q) use ($companyId) {
