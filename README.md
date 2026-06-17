@@ -5,6 +5,8 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
+**🚀 Live Production URL:** [https://simagang-production.up.railway.app/](https://simagang-production.up.railway.app/)
+
 SiMagang adalah platform digital terintegrasi berbasis Laravel yang dirancang khusus untuk memfasilitasi administrasi, monitoring, dan evaluasi program magang mahasiswa. Sistem ini menghubungkan empat pilar utama — **Admin Prodi, Dosen Pembimbing, Perusahaan Mitra, dan Mahasiswa** — dalam satu pintu, menciptakan transparansi dan efisiensi manajemen magang kampus dari awal pendaftaran hingga pelaporan nilai akhir.
 
 ---
