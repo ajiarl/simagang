@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\LecturerController;
 use App\Http\Controllers\Admin\PeriodController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('students', StudentController::class)->except(['destroy']);
 
 // Manajemen Dosen
-Route::resource('lecturers', App\Http\Controllers\Admin\LecturerController::class)->except(['destroy']);
+Route::resource('lecturers', LecturerController::class)->except(['destroy']);
 
 // Manajemen Perusahaan
 Route::resource('companies', CompanyController::class);

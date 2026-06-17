@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class LecturerController extends Controller
 {
@@ -16,7 +15,7 @@ class LecturerController extends Controller
     {
         $query = User::role('dosen')->orderBy('name');
         
-        if ($request->has('search') && $request->search != '') {
+        if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
@@ -67,7 +66,7 @@ class LecturerController extends Controller
             'phone'      => $request->phone,
             'faculty'    => $request->faculty,
             'department' => $request->department,
-            'password'   => Hash::make($request->password),
+            'password'   => $request->password,
         ]);
 
         $lecturer->assignRole('dosen');
@@ -117,6 +116,13 @@ class LecturerController extends Controller
             'faculty'    => 'nullable|string|max:255',
             'department' => 'nullable|string|max:255',
             'password'   => 'nullable|string|min:8|confirmed',
+        ], [
+            'name.required'      => 'Nama lengkap wajib diisi.',
+            'email.required'     => 'Email wajib diisi.',
+            'email.email'        => 'Format email tidak valid.',
+            'email.unique'       => 'Email ini sudah digunakan oleh akun lain.',
+            'password.min'       => 'Password minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
         $lecturer->update($request->only([
@@ -124,7 +130,7 @@ class LecturerController extends Controller
         ]));
 
         if ($request->filled('password')) {
-            $lecturer->update(['password' => Hash::make($request->password)]);
+            $lecturer->update(['password' => $request->password]);
         }
 
         return redirect()->route('admin.lecturers.index')->with('success', 'Data dosen pembimbing berhasil diperbarui.');

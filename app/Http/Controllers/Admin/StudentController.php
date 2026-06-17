@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -16,7 +15,7 @@ class StudentController extends Controller
     {
         $query = User::role('mahasiswa')->orderBy('name');
         
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
@@ -76,7 +75,7 @@ class StudentController extends Controller
             'nim'      => $request->nim,
             'email'    => $request->email,
             'phone'    => $request->phone,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         $student->assignRole('mahasiswa');
@@ -140,7 +139,7 @@ class StudentController extends Controller
         ]));
 
         if ($request->filled('password')) {
-            $student->update(['password' => Hash::make($request->password)]);
+            $student->update(['password' => $request->password]);
         }
 
         return redirect()->route('admin.students.index')->with('success', 'Data mahasiswa berhasil diperbarui.');
