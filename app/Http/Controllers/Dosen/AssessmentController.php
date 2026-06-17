@@ -70,6 +70,11 @@ class AssessmentController extends Controller
             'notes' => $validated['notes'],
         ]);
 
+        $perusahaanExists = $application->assessments()->where('assessor_type', 'perusahaan')->exists();
+        if ($perusahaanExists) {
+            $application->update(['status' => 'completed']);
+        }
+
         $application->user->notify(new \App\Notifications\AssessmentCompleted($assessment));
 
         return back()->with('success', 'Penilaian berhasil disimpan.');

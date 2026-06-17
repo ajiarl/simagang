@@ -363,7 +363,16 @@
 
             <table class="signature-area">
                 <tr>
-                    <td></td>
+                    <td style="text-align: left; vertical-align: top; padding-top: 5px;">
+                        @if(!empty($verifyUrl))
+                            <div style="display: inline-block; text-align: center;">
+                                {!! QrCode::size(70)->generate($verifyUrl) !!}
+                                <div style="font-size: 6.5pt; color: #737782; margin-top: 4px; line-height: 1.2;">
+                                    Pindai untuk verifikasi<br>sertifikat online
+                                </div>
+                            </div>
+                        @endif
+                    </td>
                     <td></td>
                     <td>
                         <p class="sig-title">Admin Program Studi,</p>

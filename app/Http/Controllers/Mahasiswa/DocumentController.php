@@ -58,10 +58,13 @@ class DocumentController extends Controller
             'assessments', 'logbooks', 'attendances'
         ]);
 
+        $nilaiDosen      = $application->assessments->where('assessor_type', 'dosen')->first()?->final_score;
+        $nilaiPerusahaan = $application->assessments->where('assessor_type', 'perusahaan')->first()?->final_score;
         $nilaiAkhir      = $application->combined_score;
+        $verifyUrl       = route('certificate.verify', $application->verification_token);
 
         $pdf = Pdf::loadView('pdf.sertifikat', compact(
-            'application', 'nilaiDosen', 'nilaiPerusahaan', 'nilaiAkhir'
+            'application', 'nilaiDosen', 'nilaiPerusahaan', 'nilaiAkhir', 'verifyUrl'
         ))->setPaper('A4', 'portrait');
 
         return $pdf->download('sertifikat-magang-' . $application->user->nim . '.pdf');

@@ -98,3 +98,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/penilaian/{application}', [App\Http\Controllers\Perusahaan\AssessmentController::class, 'store'])->name('assessments.store');
     });
 });
+
+// Verifikasi Sertifikat Publik
+Route::get('/verify/{token}', [App\Http\Controllers\VerificationController::class, 'verify'])->name('certificate.verify');
+

@@ -22,6 +22,7 @@ class InternshipApplication extends Model
         'start_date',
         'end_date',
         'approved_at',
+        'verification_token',
     ];
 
     protected function casts(): array
@@ -73,6 +74,15 @@ class InternshipApplication extends Model
     public function assessments(): HasMany
     {
         return $this->hasMany(Assessment::class);
+    }
+
+    protected static function booted()
+    {
+        static::saving(function ($application) {
+            if ($application->status === 'completed' && empty($application->verification_token)) {
+                $application->verification_token = (string) \Illuminate\Support\Str::uuid();
+            }
+        });
     }
 
     // ── Scopes ──
