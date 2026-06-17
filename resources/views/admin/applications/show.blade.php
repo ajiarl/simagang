@@ -116,7 +116,7 @@
                         @csrf
                         <div style="margin-bottom: 12px;">
                             <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: #424751;">Dosen Pembimbing</label>
-                            <select name="dosen_id" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
+                            <select name="dosen_id" id="dosen_id" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
                                 <option value="">-- Pilih Dosen --</option>
                                 @foreach($dosens as $dosen)
                                     <option value="{{ $dosen->id }}">{{ $dosen->name }}</option>
@@ -125,11 +125,11 @@
                         </div>
                         <div style="margin-bottom: 12px;">
                             <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: #424751;">Tanggal Mulai</label>
-                            <input type="date" name="start_date" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
+                            <input type="text" name="start_date" id="start_date" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
                         </div>
                         <div style="margin-bottom: 16px;">
                             <label style="display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: #424751;">Tanggal Selesai</label>
-                            <input type="date" name="end_date" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
+                            <input type="text" name="end_date" id="end_date" style="width: 100%; padding: 8px; border: 1px solid #c2c6d3; border-radius: 6px; font-size: 13px;" required>
                         </div>
                         <button type="submit" class="btn-primary" style="width: 100%; background: #166534;">
                             <span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span> Setujui
@@ -172,3 +172,39 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css">
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Flatpickr
+        const fpStart = flatpickr("#start_date", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr) {
+                fpEnd.set('minDate', dateStr);
+            }
+        });
+
+        const fpEnd = flatpickr("#end_date", {
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        // Tom Select
+        new TomSelect("#dosen_id", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            }
+        });
+    });
+</script>
+@endpush

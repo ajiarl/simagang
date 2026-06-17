@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 
     <style>
         /* ── Sidebar ── */
@@ -177,6 +178,35 @@
         .user-dropdown-menu a:hover,
         .user-dropdown-menu button:hover {
             background: #f3f3fa;
+        }
+
+        /* ── Tom Select Overrides ── */
+        .ts-control {
+            border: 1px solid #c2c6d3 !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            font-size: 14px !important;
+            font-family: 'Inter', sans-serif !important;
+            color: #191c20 !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+        }
+        .ts-control input::placeholder {
+            color: #737782 !important;
+        }
+        .ts-dropdown {
+            border-radius: 8px !important;
+            border: 1px solid #c2c6d3 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+        }
+        .ts-dropdown .option {
+            padding: 10px 12px !important;
+            font-size: 14px !important;
+        }
+        
+        /* ── Flatpickr Overrides ── */
+        .flatpickr-input {
+            background-color: #ffffff !important;
         }
     </style>
 </head>
@@ -509,5 +539,6 @@
         });
     }
     </script>
+    @stack('scripts')
 </body>
 </html>

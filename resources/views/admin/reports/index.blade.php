@@ -133,6 +133,23 @@
         if (params.has('user_id')) {
             document.getElementById('student_select').value = params.get('user_id');
         }
+
+        // Initialize Tom Select
+        new TomSelect("#student_select", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            }
+        });
     });
 </script>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css">
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+@endpush

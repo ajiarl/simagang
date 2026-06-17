@@ -28,13 +28,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="flex flex-col gap-2">
                     <label for="registration_start" class="text-label-md text-gray-700">Tanggal Buka Pendaftaran *</label>
-                    <input type="date" id="registration_start" name="registration_start" value="{{ old('registration_start') }}" required class="form-input w-full p-3">
+                    <input type="text" id="registration_start" name="registration_start" value="{{ old('registration_start') }}" required class="form-input w-full p-3">
                     <x-form-error name="registration_start" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="registration_end" class="text-label-md text-gray-700">Tanggal Tutup Pendaftaran *</label>
-                    <input type="date" id="registration_end" name="registration_end" value="{{ old('registration_end') }}" required class="form-input w-full p-3">
+                    <input type="text" id="registration_end" name="registration_end" value="{{ old('registration_end') }}" required class="form-input w-full p-3">
                     <x-form-error name="registration_end" />
                 </div>
             </div>
@@ -42,13 +42,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="flex flex-col gap-2">
                     <label for="start_date" class="text-label-md text-gray-700">Tanggal Mulai Magang *</label>
-                    <input type="date" id="start_date" name="start_date" value="{{ old('start_date') }}" required class="form-input w-full p-3">
+                    <input type="text" id="start_date" name="start_date" value="{{ old('start_date') }}" required class="form-input w-full p-3">
                     <x-form-error name="start_date" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="end_date" class="text-label-md text-gray-700">Tanggal Selesai Magang *</label>
-                    <input type="date" id="end_date" name="end_date" value="{{ old('end_date') }}" required class="form-input w-full p-3">
+                    <input type="text" id="end_date" name="end_date" value="{{ old('end_date') }}" required class="form-input w-full p-3">
                     <x-form-error name="end_date" />
                 </div>
             </div>
@@ -67,3 +67,39 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fpRegStart = flatpickr("#registration_start", {
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr) {
+                fpRegEnd.set('minDate', dateStr);
+            }
+        });
+
+        const fpRegEnd = flatpickr("#registration_end", {
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr) {
+                fpStartDate.set('minDate', dateStr);
+            }
+        });
+
+        const fpStartDate = flatpickr("#start_date", {
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr) {
+                fpEndDate.set('minDate', dateStr);
+            }
+        });
+
+        const fpEndDate = flatpickr("#end_date", {
+            dateFormat: "Y-m-d"
+        });
+    });
+</script>
+@endpush
