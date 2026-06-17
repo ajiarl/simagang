@@ -77,8 +77,10 @@
 
             <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px;">
                 <a href="{{ route('admin.lecturers.index') }}" class="btn-secondary" style="text-decoration: none; padding: 10px 16px;">Batal</a>
-                <button type="submit" class="btn-primary" style="padding: 10px 16px;">
-                    <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 6px;">save</span> Simpan Perubahan
+                <button type="submit" id="submitBtn" class="btn-primary" style="padding: 10px 16px;"
+                    onclick="this.disabled=true; this.querySelector('.btn-text').textContent='Menyimpan...'; this.form.submit();">
+                    <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 6px;">save</span>
+                    <span class="btn-text">Simpan Perubahan</span>
                 </button>
             </div>
         </form>

@@ -86,11 +86,11 @@
                             </td>
                             <td style="padding: 16px 20px;">
                                 @if($application->status == 'approved')
-                                    <span style="background: #d3fbe2; color: #0a7035; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">Aktif</span>
+                                    <span class="chip-approved">Aktif</span>
                                 @elseif($application->status == 'completed')
-                                    <span style="background: #e2e2e9; color: #424751; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">Selesai</span>
+                                    <span class="chip-approved" style="background: #e2e2e9; color: #424751;">Selesai</span>
                                 @else
-                                    <span style="background: #ffdad6; color: #93000a; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">Lainnya</span>
+                                    <span class="chip-pending">Lainnya</span>
                                 @endif
                             </td>
                         </tr>
