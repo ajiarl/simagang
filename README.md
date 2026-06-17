@@ -45,7 +45,6 @@ SiMagang adalah platform digital terintegrasi berbasis Laravel yang dirancang kh
 
 - PHP >= 8.3
 - Composer
-- Node.js & NPM
 - MySQL 8.0
 
 ---
@@ -60,10 +59,7 @@ cd simagang
 # 2. Install PHP dependencies
 composer install
 
-# 3. Install Node dependencies
-npm install
-
-# 4. Setup environment
+# 3. Setup environment
 cp .env.example .env
 php artisan key:generate
 ```
@@ -83,11 +79,7 @@ DB_PASSWORD=
 php artisan migrate:fresh --seed
 
 # 6. Jalankan development server
-# Terminal 1:
 php artisan serve
-
-# Terminal 2:
-npm run dev
 ```
 
 Buka: **http://localhost:8000**
